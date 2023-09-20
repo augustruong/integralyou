@@ -30,6 +30,8 @@ export default function ListUserPage(){
             <div className="row h-100">
                 <div className="col-12">
                     <p><Link to="/addnewuser" className="btn btn-success">Add New User</Link> </p>
+                    <p><Link to="/editor" className="btn btn-success">Go to Editor</Link> </p>
+
                     <h1>List Users</h1>
                     <table class="table table-bordered table-striped">
                         <thead>
