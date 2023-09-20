@@ -8,24 +8,25 @@ export default function MyCKEditor() {
     const navigate = useNavigate();
   
     const [inputs, setInputs] = useState([]);
+    const [error, setError] = useState(null);
 
     const handleChange = (event) => {
-        const name = event.target.name;
         const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}));
+        setInputs(values => ({...values, ["title"]: value}));
     }
+    
     const handleSubmit = (event) => {
         event.preventDefault();
-  
+        
         axios.post('http://127.0.0.1:5000/postadd', inputs).then(function(response){
             console.log(response.data);
             navigate('/');
-        });
-          
+        }).catch((error) => setError(error));
     }
     
     return(
         <div>
+            {error ? <p>An error occurred: {error.message}</p> : null}
             <div className="App">
                 <h2>Using CKEditor 5</h2>
                 <form onSubmit={handleSubmit}>
@@ -39,7 +40,7 @@ export default function MyCKEditor() {
                         onChange={(event,editor) => {
                             const data = editor.getData();
                             console.log({event,editor,data});
-                            setInputs(data => ({...data, ["content"]: data}));
+                            setInputs(values => ({...values, ["content"]: data}));
                         }}
                     />
                     <button type="submit" name="add" className="btn btn-primary">Save</button>
