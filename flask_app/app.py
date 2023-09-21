@@ -3,8 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 import datetime
 from flask_marshmallow import Marshmallow #ModuleNotFoundError: No module named 'flask_marshmallow' = pip install flask-marshmallow https://pypi.org/project/flask-marshmallow/
 from flask_cors import CORS #ModuleNotFoundError: No module named 'flask_cors' = pip install Flask-Cors
+import os
+from flask import Flask, flash, request, redirect, url_for, send_from_directory, send_file
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = './img'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 CORS(app)
 
 #Add ckeditor
@@ -38,6 +45,43 @@ users_schema = UserSchema(many=True)
 @app.route("/")
 def hello_world():
     return "<p>Hello, World</p>"
+
+#-------------------------------------------------- ULOAD,GET FILE
+def allowed_file(filename):
+	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/file-upload', methods=['POST'])
+def upload_file():
+	# check if the post request has the file part
+	if 'file' not in request.files:
+		resp = jsonify({'message' : 'No file part in the request'})
+		resp.status_code = 400
+		return resp
+	file = request.files['file']
+	if file.filename == '':
+		resp = jsonify({'message' : 'No file selected for uploading'})
+		resp.status_code = 400
+		return resp
+	if file and allowed_file(file.filename):
+		filename = secure_filename(file.filename)
+		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+		resp = jsonify({'message' : 'File successfully uploaded', 'filename': filename})
+		resp.status_code = 201
+		return resp
+	else:
+		resp = jsonify({'message' : 'Allowed file types are txt, pdf, png, jpg, jpeg, gif'})
+		resp.status_code = 400
+		return resp
+     
+@app.route('/file-get/<filename>', methods=['GET'])
+def get_file(filename):
+    try:
+        return send_file(app.config['UPLOAD_FOLDER'] + "/" + filename)
+    except FileNotFoundError:
+        resp = jsonify({'message' : 'File not found'})
+        resp.status_code = 404
+        return resp
+
 
 #--------------------------------------------------CRUD Users
 @app.route('/listusers',methods =['GET'])
