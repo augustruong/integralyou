@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios" //npm install axios --save 
 import {Link} from 'react-router-dom';
-  
+import parse from 'html-react-parser'
+
 export default function ListUserPage(){
   
     const [users, setUsers] = useState([]);
+    const [posts, setPosts] = useState([]);
+
     useEffect(() => {
         getUsers();
+        getPosts();
     }, []);
   
     function getUsers() {
@@ -15,7 +19,12 @@ export default function ListUserPage(){
             setUsers(response.data);
         });
     }
-     
+    function getPosts() {
+        axios.get('http://127.0.0.1:5000/listposts').then(function(response) {
+            console.log(response.data);
+            setPosts(response.data);
+        });
+    }
     const deleteUser = (id) => {
         axios.delete(`http://127.0.0.1:5000/userdelete/${id}`).then(function(response){
             console.log(response.data);
@@ -58,6 +67,18 @@ export default function ListUserPage(){
                             )}
                         </tbody>
                     </table>
+
+                    <h1>List Posts</h1>
+                    <div>
+                        {posts.map((post) =>
+                            <div>
+                                <div>{post.id}</div>
+                                <div>{post.title}</div>
+                                {parse(post.content)}
+
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
