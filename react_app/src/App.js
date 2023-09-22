@@ -6,9 +6,12 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import ListUserPage from "./pages/ListUserPage";
 import CreateUser from './pages/CreateUser';
 import EditUser from './pages/EditUser';
-import Editor from './pages/MyCKEditor';
+import MyCKEditor from './pages/MyCKEditor';
+import AdminLogin from './pages/AdminLogin';
+import AdminHome from './pages/AdminHome';
  
 function App() {
+  const token = localStorage.getItem('token')
   return (
     <div className="vh-100 gradient-custom">
     <div className="container">
@@ -19,7 +22,12 @@ function App() {
             <Route path="/" element={<ListUserPage />} />
             <Route path="/addnewuser" element={<CreateUser />} />
             <Route path="user/:id/edit" element={<EditUser />} />
-            <Route path="/editor" element={<Editor />} />
+            <Route path="/editor" element={<MyCKEditor />} />
+
+            <Route path="/admin/login" element={<AdminLogin />} />
+            {token &&
+              <Route path="/admin/home" element={<AdminHome />} />
+            }
 
         </Routes>
       </BrowserRouter>
