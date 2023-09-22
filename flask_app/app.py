@@ -6,7 +6,9 @@ from flask_cors import CORS #ModuleNotFoundError: No module named 'flask_cors' =
 import os
 from flask import Flask, flash, request, redirect, url_for, send_from_directory, send_file
 from werkzeug.utils import secure_filename
-
+import jwt
+from werkzeug.security import check_password_hash
+from validate import validate_username_and_password
 
 UPLOAD_FOLDER = './img'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -37,6 +39,13 @@ class Admin(db.Model):
     def __init__(self,username,password):
         self.username=username
         self.password=password
+
+class AdminSchema(ma.Schema):
+    class Meta:
+        fields = ('id','username','password')
+ 
+admin_schema = AdminSchema()
+admin_schema = AdminSchema(many=True)
 
 #-----------------------------------------------------Users
 class Users(db.Model):
@@ -224,14 +233,15 @@ def login():
         if admin and check_password_hash(admin.password, request.json['password']):
             try:
                 # token should expire after 24 hrs
-                admin["token"] = jwt.encode(
-                    {"id": admin["id"]},
+                token = jwt.encode(
+                    {"id": admin.id},
                     app.config["SECRET_KEY"],
                     algorithm="HS256"
                 )
                 return {
                     "message": "Successfully fetched auth token",
-                    "data": admin
+                    "username": admin.username,
+                    "token": token
                 }
             except Exception as e:
                 return {
