@@ -1,0 +1,129 @@
+#header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 25px 50px;
+    width: 100%;
+    background: var(--color-white);
+}
+#header a {
+    color: var(--color-gray);
+}
+#header a:hover {
+    color: var(--color-primary-pink);
+}
+
+.show {
+    visibility: visible;
+    transition: all 0.5s;
+}
+  
+.hidden {
+    visibility: hidden;
+    transition: all 0.5s;
+    transform: translateY(-100%);
+}
+  
+#header a {cursor: pointer;}
+#header .logo {
+    width: 163.18px;
+}
+#header .logo > img {
+    width: 55px;
+}
+#header > .header__menu ul {
+    display: flex;
+    gap: 45px;
+    z-index: 999;
+}
+
+#header > .header__menu ul li a{
+    font-family: 'Noto Sans JP',sans-serif;
+    font-size: 14px;
+    display: inline-block;
+}
+a.nav__link.active {
+    color: var(--color-primary-pink) !important;
+    border-bottom: 2px solid var(--color-primary-pink);
+}
+#header > .menu-icon {
+    display: none;
+}
+
+.fas.fa-times {color: var(--color-gray);}
+
+@media screen and (max-width: 960px) {
+    #header {
+        height: 85px;
+        flex-direction: row;
+        width: 100vw;
+    }
+
+    #header > .menu-icon {
+        display: block;
+        position: fixed;
+        height: 45px;
+        width: 45px;
+        padding-top: 5px;
+        top: 25px;
+        right: 3%;
+        font-size: 1.7rem;
+        cursor: pointer;
+        border-radius: 50%;
+        text-align: center;
+        z-index: 999;
+        color: var(--color-gray);
+    }
+
+    .fa-times {
+        color: var(--color-gray);
+        font-size: 2rem;
+      }
+    #header > .header__menu {
+        display: none;
+        width: 50%;
+        height: 100vh;
+        right: 0;
+    }
+    
+    #header > .header__menu.active {
+        display: block;
+        background-color: var(--color-white);
+        backdrop-filter: blur(10px);
+        top: 0;
+        right: 0;
+        transition: all 0.5s ease;
+        position: fixed;
+        box-shadow: -5px 0 5px #734d2919;
+    }
+
+    #header > .header__menu ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        grid-gap: 5%;
+        height: 100%;
+        writing-mode: unset;
+
+    }
+    #header > .header__menu ul li {
+        margin-top: 40px;
+        transform: none;
+    }
+    
+    #header > .header__menu ul li a{
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    #header > .header__menu{
+        width: 100%;
+    }
+}

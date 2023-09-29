@@ -6,6 +6,9 @@ from flask_cors import CORS #ModuleNotFoundError: No module named 'flask_cors' =
 import os
 from flask import Flask, flash, request, redirect, url_for, send_from_directory, send_file
 from werkzeug.utils import secure_filename
+import jwt
+from werkzeug.security import check_password_hash
+from validate import validate_username_and_password
 
 UPLOAD_FOLDER = './img'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -14,7 +17,10 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 CORS(app)
 
-#Add ckeditor
+#Login
+SECRET_KEY = os.environ.get('SECRET_KEY') or 'this is a secret'
+print(SECRET_KEY)
+app.config['SECRET_KEY'] = SECRET_KEY
 
 # Databse configuration                                  Username:password@hostname/databasename
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/flaskreact'
@@ -22,6 +28,24 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
 
 ma=Marshmallow(app)
+
+#-----------------------------------------------------Admin
+class Admin(db.Model):
+    __tablename__ = "admin"
+    id = db.Column(db.Integer,primary_key=True)
+    username = db.Column(db.String(50))
+    password = db.Column(db.String(255))
+ 
+    def __init__(self,username,password):
+        self.username=username
+        self.password=password
+
+class AdminSchema(ma.Schema):
+    class Meta:
+        fields = ('id','username','password')
+ 
+admin_schema = AdminSchema()
+admin_schema = AdminSchema(many=True)
 
 #-----------------------------------------------------Users
 class Users(db.Model):
@@ -46,7 +70,7 @@ users_schema = UserSchema(many=True)
 def hello_world():
     return "<p>Hello, World</p>"
 
-#-------------------------------------------------- ULOAD,GET FILE
+#-------------------------------------------------- UPLOAD,GET FILE
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -187,3 +211,51 @@ def postadd():
     db.session.commit()
 
     return post_schema.jsonify(posts)
+
+#------------------------------------------------------------------------------------------Login
+@app.route("/admin/login", methods=["POST"])
+def login():
+    try:
+        data = request.json
+        if not data:
+            return {
+                "message": "Please provide user details",
+                "data": None,
+                "error": "Bad request"
+            }, 400
+        # validate input
+        is_validated = validate_username_and_password(data.get('username'), data.get('password'))
+        if is_validated is not True:
+            return dict(message='Invalid data', data=None, error=is_validated), 400
+        
+        admin = Admin.query.filter_by(username=request.json['username']).first() # tìm user bằng tên username
+
+        if admin and check_password_hash(admin.password, request.json['password']):
+            try:
+                # token should expire after 24 hrs
+                token = jwt.encode(
+                    {"id": admin.id},
+                    app.config["SECRET_KEY"],
+                    algorithm="HS256"
+                )
+                return {
+                    "message": "Successfully fetched auth token",
+                    "username": admin.username,
+                    "token": token
+                }
+            except Exception as e:
+                return {
+                    "error": "Something went wrong",
+                    "message": str(e)
+                }, 500
+        return {
+            "message": "Error fetching auth token!, invalid email or password",
+            "data": None,
+            "error": "Unauthorized"
+        }, 404
+    except Exception as e:
+        return {
+                "message": "Something went wrong!",
+                "error": str(e),
+                "data": None
+        }, 500

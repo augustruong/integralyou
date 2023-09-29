@@ -1,0 +1,12 @@
+.blog { padding-top: 200px; padding-bottom: 200px;}
+section { height: 100vh; max-height: 900px;}
+
+.blog > .blog-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-xl) var(--space-l);
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 75%;
+}

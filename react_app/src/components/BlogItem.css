@@ -1,0 +1,19 @@
+.blog-item {
+    width: 280px;
+}
+.blog-item a {
+    color: var(--color-gray);
+}
+.blog-item > .thumbnail > img{
+    object-fit: cover;
+    width: 280px;
+    height: 280px;
+}
+.blog-item > .content > a > .title {
+    font-size: 16px;
+    font-weight: 700;
+    word-break: break-word;
+}
+.blog-item > .content > .date {
+    color: var(--color-light-gray);
+}
