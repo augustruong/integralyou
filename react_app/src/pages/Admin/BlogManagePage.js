@@ -34,7 +34,7 @@ export default function BlogManagePage(){
                     <div>
                         {posts.map((post) =>
                             <div>
-                                <div>{post.id}</div>
+                                <div>{post.cover}</div>
                                 <div>{post.title}</div>
                                 {parse(post.content)}
 

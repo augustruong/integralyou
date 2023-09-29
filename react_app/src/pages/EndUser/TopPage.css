@@ -160,7 +160,7 @@ section.blog .blog-list {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: var(--space-l);
+    gap: var(--space-xl);
     flex-wrap: wrap;
     justify-content: center;
     width: 75%;

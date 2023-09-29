@@ -157,14 +157,16 @@ class Posts(db.Model):
     title = db.Column(db.String)
     content = db.Column(db.String)
     date = db.Column(db.DateTime,default=datetime.datetime.now)
+    cover = db.Column(db.String)
  
-    def __init__(self,title,content):
+    def __init__(self,title,cover,content):
         self.title=title
+        self.cover=cover
         self.content=content
 
 class PostSchema(ma.Schema):
     class Meta:
-        fields = ('id','title','content','date')
+        fields = ('id','title','cover','content','date')
  
 post_schema = PostSchema()
 posts_schema = PostSchema(many=True)
@@ -186,9 +188,11 @@ def postupdate(id):
     post = Posts.query.get(id)
  
     title = request.json['title']
+    cover = request.json['cover']
     content = request.json['content']
- 
+
     post.title = title
+    post.cover = cover
     post.content = content
  
     db.session.commit()
@@ -204,9 +208,11 @@ def postdelete(id):
 @app.route('/postadd',methods=['POST'])
 def postadd():
     title = request.json['title']
+    cover = request.json['cover']
     content = request.json['content']
+    date = request.json['date']
 
-    posts = Posts(title,content)
+    posts = Posts(title,cover,content,date)
     db.session.add(posts)
     db.session.commit()
 

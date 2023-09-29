@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
@@ -15,6 +15,7 @@ function uploadAdapter(loader) {
         const body = new FormData();
         loader.file.then((file) => {
             body.append("file", file);
+            console.log(file)
             // let headers = new Headers();
             // headers.append("Origin", "http://localhost:3000");
             fetch(`${API_URL}/${UPLOAD_ENDPOINT}`, {
@@ -48,12 +49,25 @@ export default function MyCKEditor() {
   
     const [inputs, setInputs] = useState([]);
     const [error, setError] = useState(null);
+    const [coverSrc, setCoverSrc] = useState(null);
 
-    const handleChange = (event) => {
+    const hiddenFileInput = useRef(null);
+
+    const handleTitleChange = (event) => {
         const value = event.target.value;
         setInputs(values => ({...values, ["title"]: value}));
     }
-    
+    const handleCoverChange = event => {
+        const fileUploaded = event.target.files[0];
+        const body = new FormData();
+        body.append("file", fileUploaded);
+        fetch(`${API_URL}/${UPLOAD_ENDPOINT}`, {
+            method: "post",
+            body: body
+        })
+        setCoverSrc(`http://127.0.0.1:5000/file-get/${fileUploaded.name}`)
+ 
+      };
     const handleSubmit = (event) => {
         event.preventDefault();
         
@@ -62,6 +76,9 @@ export default function MyCKEditor() {
             navigate('/');
         }).catch((error) => setError(error));
     }
+    const handleClick = event => {
+        hiddenFileInput.current.click();
+      }
     
     return(
         <div>
@@ -70,8 +87,14 @@ export default function MyCKEditor() {
                 <h2>Using CKEditor 5</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
+                        <img src={coverSrc}/>
                         <label>Title</label>
-                        <input type="text" className="form-control" name="title" onChange={handleChange} />
+                        <input type="text" className="form-control" name="title" onChange={handleTitleChange} />
+                        <button type="button" onClick={handleClick}>
+                            Upload cover picture
+                            <input hidden accept="image/*" multiple type="file" ref={hiddenFileInput} onChange={handleCoverChange} />
+                        </button>
+                        
                     </div>
                     <CKEditor
                         editor={ Editor }
@@ -85,7 +108,7 @@ export default function MyCKEditor() {
                             extraPlugins: [uploadPlugin]
                           }}
                     />
-                    <button type="submit" name="add" className="btn btn-primary">Save</button>
+                    <button type="submit" name="add">Save</button>
                 </form>
             </div>
         </div>

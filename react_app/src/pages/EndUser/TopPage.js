@@ -192,7 +192,6 @@ export default function TopPage(){
                     <BlogItem />
                     <BlogItem />
                     <BlogItem />
-                    <BlogItem />
                 </div>
                 <button className="primary">すべてブログを見る</button>
             </section>
