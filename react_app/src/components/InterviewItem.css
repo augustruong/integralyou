@@ -1,0 +1,20 @@
+.interview-item {
+    width: 280px;
+}
+.interview-item a {
+    color: var(--color-gray);
+}
+.interview-item > a.thumbnail > img{
+    object-fit: cover;
+    width: 300px;
+    height: 600px;
+}
+.interview-item > .content > a > .title {
+    font-size: 16px;
+    font-weight: 700;
+    word-break: break-word;
+}
+
+.interview-item > .content > .date {
+    color: var(--color-light-gray);
+}

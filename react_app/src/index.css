@@ -1,13 +1,44 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --color-primary-pink: #E76387;
+  --color-coral: #FF9687;
+  --color-gray: #4f4f4f;
+  --color-light-gray: #BDBDBD;
+  --color-white: #fff;
+
+  /* Space - Sizes */
+  --space-none: 0;
+  --space-xs: 4px;
+  --space-s: 8px;
+  --space-base: 16px;
+  --space-m: 24px;
+  --space-l: 32px;
+  --space-xl: 44px;
+  --space-xxl: 52px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  overflow-x: hidden;
+  font-family: 'Noto Sans JP',sans-serif;
+  font-size: 14px;
+  color: var(--color-gray);
 }
+body *{z-index: 1; }
+
+body, html {
+  /* scroll-snap-points-y: repeat(100vh);
+  scroll-snap-type: y mandatory; */
+  scroll-behavior: smooth;
+}
+
+
+.gap-none {gap: var(--space-none);}
+.gap-xs {gap: var(--space-xs);}
+.gap-s {gap: var(--space-s);}
+.gap-base {gap: var(--space-base);}
+.gap-m {gap: var(--space-m);}
+.gap-l {gap: var(--space-l);}
+.gap-xl {gap: var(--space-xl);}
+.gap-xxl {gap: var(--space-xxl);}
+
+.color-primary-pink {color: var(--color-primary-pink);}
+.color-coral {color: var(--color-coral);}
