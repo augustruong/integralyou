@@ -1,7 +1,7 @@
 import React, { } from 'react';
 import './App.css';
    
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {Routes, Route, useLocation} from 'react-router-dom';
    
 import TopPage from "./pages/EndUser/TopPage";
 import ProfilePage from "./pages/EndUser/ProfilePage";
@@ -19,13 +19,14 @@ import AdminHome from './pages/Admin/AdminHome';
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 
+const hideLayoutPaths = ["/admin/login", "/admin/home", "/admin/blogmanage", "/editor", "/addnewuser", "user/:id/edit"]
  
 function App() {
-  const token = localStorage.getItem('token')
-  return (
-      <BrowserRouter>
+    const token = localStorage.getItem('token')
+    const { pathname } = useLocation();
+    return (
       <>
-        <Header />
+        {!hideLayoutPaths.includes(pathname) && (<Header />)}
         <Routes>
             <Route path="/" element={<TopPage />} />
             <Route path="/profile" element={<ProfilePage />} />
@@ -34,23 +35,19 @@ function App() {
             <Route path="/interview" element={<InterviewPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/faq" element={<ProfilePage />} />
-        </Routes>
-        <Footer />
-      </>
-      <>
-        <Routes>
+  
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/home" element={<AdminHome />} />
-
+  
             <Route path="/admin/blogmanage" element={<BlogManagePage />} />
             <Route path="/editor" element={<MyCKEditor />} />
-
+  
             <Route path="/addnewuser" element={<CreateUser />} />
             <Route path="user/:id/edit" element={<EditUser />} />
         </Routes>
+        {!hideLayoutPaths.includes(pathname) && (<Footer />)}
       </>
-      </BrowserRouter>
-  );
+    );
 }
     
 export default App;
