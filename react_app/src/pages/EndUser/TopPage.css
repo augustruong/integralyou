@@ -117,6 +117,7 @@ section.contact > .img-wrapper > .mark1 {
     position: absolute;
     left: 11%;
     z-index: 3;
+    animation: float 3s infinite;
 }
 section.contact > .img-wrapper > .mark2 {
     height: 205px;
@@ -124,6 +125,8 @@ section.contact > .img-wrapper > .mark2 {
     left: 64%;
     top: 20%;
     z-index: 1;
+    animation: jitter 3s infinite;
+
 }
 
 section.newsletter > .img-wrapper {

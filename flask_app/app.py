@@ -210,9 +210,8 @@ def postadd():
     title = request.json['title']
     cover = request.json['cover']
     content = request.json['content']
-    date = request.json['date']
 
-    posts = Posts(title,cover,content,date)
+    posts = Posts(title,cover,content)
     db.session.add(posts)
     db.session.commit()
 
