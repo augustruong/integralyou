@@ -16,26 +16,27 @@ import AdminLogin from './pages/Admin/AdminLogin';
 import AdminHome from './pages/Admin/AdminHome';
 
 import Layout from './components/Layout';
+import words from './words';
  
 function App() {
     const token = localStorage.getItem('token')
     const { pathname } = useLocation();
     return (
         <Routes>
-            <Route path="/" element={Layout(TopPage)} />
-            <Route path="/profile" element={Layout(ProfilePage)} />
-            <Route path="/message" element={Layout(MessagePage)} />
-            <Route path="/program" element={Layout(ProfilePage)} />
-            <Route path="/interview" element={Layout(InterviewPage)} />
-            <Route path="/blog" element={Layout(BlogPage)} />
-            <Route path="/faq" element={Layout(ProfilePage)} />
+            <Route path={words.routes.user.top} element={Layout(TopPage)} />
+            <Route path={words.routes.user.profile} element={Layout(ProfilePage)} />
+            <Route path={words.routes.user.message} element={Layout(MessagePage)} />
+            <Route path={words.routes.user.program} element={Layout(ProfilePage)} />
+            <Route path={words.routes.user.interview} element={Layout(InterviewPage)} />
+            <Route path={words.routes.user.blog} element={Layout(BlogPage)} />
+            <Route path={words.routes.user.faq} element={Layout(ProfilePage)} />
   
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/admin/home" element={<AdminHome />} />
+            <Route path={words.routes.admin.login} element={<AdminLogin />} />
+            <Route path={words.routes.admin.home} element={<AdminHome />} />
   
-            <Route path="/admin/blogmanage" element={<BlogManagePage />} />
-            <Route path="/admin/createpost" element={<CreatePost />} />
-            <Route path="/admin/blogmanage/post/:id/edit" element={<EditPost />} />
+            <Route path={words.routes.admin.blogmanage} element={<BlogManagePage />} />
+            <Route path={words.routes.admin.createpost} element={<CreatePost />} />
+            <Route path={words.routes.admin.editpost} element={<EditPost />} />
 
         </Routes>
     );
