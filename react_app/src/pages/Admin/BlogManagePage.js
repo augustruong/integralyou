@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios" //npm install axios --save 
 import {Link, NavLink} from 'react-router-dom';
 import parse from 'html-react-parser'
+import words from "../../words";
 
 export default function BlogManagePage(){
     const [posts, setPosts] = useState([]);
@@ -11,12 +12,12 @@ export default function BlogManagePage(){
     }, []);
   
     function getPosts() {
-        axios.get('http://127.0.0.1:5000/listposts').then(function(response) {
+        axios.get(words.api.admin.post.list).then(function(response) {
             setPosts(response.data);
         });
     }
     const deletePost = (id) => {
-        axios.delete(`http://127.0.0.1:5000/postdelete/${id}`).then(function(response){
+        axios.delete(words.api.admin.post.delete(id)).then(function(response){
             getPosts();
         });
         alert("Successfully Deleted");
@@ -32,7 +33,7 @@ export default function BlogManagePage(){
                     <div>
                         {posts.map((post) =>
                             <div>
-                                <img src={`http://127.0.0.1:5000/file-get/${post.cover}`}/>
+                                <img src={words.api.file.get(post.cover)}/>
                                 <div>{post.title}</div>
                                 {parse(post.content)}
                                 <Link to={`post/${post.id}/edit`}>Edit</Link>

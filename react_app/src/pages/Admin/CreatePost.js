@@ -3,8 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
+import words from "../../words";
 
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = process.env.REACT_APP_API_END_POINT;
 const UPLOAD_ENDPOINT = "file-upload";
 const GETFILE_ENDPOINT = "file-get";
 
@@ -65,7 +66,7 @@ export default function CreatePost() {
             method: "post",
             body: body
         }).then(() => {
-            setCoverSrc(`http://127.0.0.1:5000/file-get/${fileUploaded.name}`)
+            setCoverSrc(words.api.admin.file.get(fileUploaded.name))
             setInputs(values => ({...values, ["cover"]: fileUploaded.name}));
         })
  
@@ -74,7 +75,7 @@ export default function CreatePost() {
         event.preventDefault();
         console.log(inputs)
 
-        axios.post('http://127.0.0.1:5000/postadd', inputs).then(function(response){
+        axios.post(words.api.admin.post.add, inputs).then(function(response){
             console.log(response.data);
             navigate('/admin/blogManage');
         }).catch((error) => setError(error));
