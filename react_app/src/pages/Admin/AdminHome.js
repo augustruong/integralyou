@@ -19,7 +19,7 @@ export default function AdminHome(){
                     <h1>Welcome Home</h1>
                 </div>
                 <div className="col-2">
-                    <Link to="/admin/blogmanage">Blog Management</Link>
+                    <Link to="/admin/blogManage">Blog Management</Link>
 
                 </div>
             </div>

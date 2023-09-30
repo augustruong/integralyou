@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 
@@ -44,13 +44,23 @@ function uploadPlugin(editor) {
     };
 }
 
-export default function MyCKEditor() {
+export default function EditPost(){
     const navigate = useNavigate();
-  
     const [inputs, setInputs] = useState([]);
-    const [error, setError] = useState(null);
-    const [coverSrc, setCoverSrc] = useState(null);
-
+    const {id} = useParams();
+    // const [coverSrc, setCoverSrc] = useState(null);
+  
+    useEffect(() => {
+        getPost(id);
+    }, [id]);
+  
+    function getPost(id) {
+        axios.get(`http://127.0.0.1:5000/postdetails/${id}`).then(function(response) {
+            console.log(response.data)
+            setInputs(response.data);
+        });
+    }
+  
     const hiddenFileInput = useRef(null);
 
     const handleTitleChange = (event) => {
@@ -64,32 +74,34 @@ export default function MyCKEditor() {
         fetch(`${API_URL}/${UPLOAD_ENDPOINT}`, {
             method: "post",
             body: body
+        }).then(() => {
+            // setCoverSrc(`http://127.0.0.1:5000/file-get/${fileUploaded.name}`)
+            setInputs(values => ({...values, ["cover"]: fileUploaded.name}));
         })
-        setCoverSrc(`http://127.0.0.1:5000/file-get/${fileUploaded.name}`)
- 
       };
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        
-        axios.post('http://127.0.0.1:5000/postadd', inputs).then(function(response){
-            console.log(response.data);
-            navigate('/');
-        }).catch((error) => setError(error));
-    }
+
     const handleClick = event => {
         hiddenFileInput.current.click();
       }
-    
-    return(
-        <div>
-            {error ? <p>An error occurred: {error.message}</p> : null}
-            <div className="App">
-                <h2>Using CKEditor 5</h2>
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        axios.put(`http://127.0.0.1:5000/postupdate/${id}`, inputs).then(function(response){
+            navigate('/admin/blogmanage');
+        });   
+    }
+     
+    return (
+    <div>
+        <div className="container h-100">
+        <div className="row">
+            <div className="col-2"></div>
+            <div className="col-8">
+                <h2>Edit Post</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <img src={coverSrc}/>
+                        <img src={`http://127.0.0.1:5000/file-get/${inputs.cover}`}/>
                         <label>Title</label>
-                        <input type="text" className="form-control" name="title" onChange={handleTitleChange} />
+                        <input type="text" value={inputs.title} className="form-control" name="title" onChange={handleTitleChange} />
                         <button type="button" onClick={handleClick}>
                             Upload cover picture
                             <input hidden accept="image/*" multiple type="file" ref={hiddenFileInput} onChange={handleCoverChange} />
@@ -99,6 +111,7 @@ export default function MyCKEditor() {
                     <CKEditor
                         editor={ Editor }
                         name="content"
+                        data={inputs.content}
                         onChange={(event,editor) => {
                             const data = editor.getData();
                             console.log({event,editor,data});
@@ -111,6 +124,9 @@ export default function MyCKEditor() {
                     <button type="submit" name="add">Save</button>
                 </form>
             </div>
+            <div className="col-2"></div>
         </div>
-    )
+        </div>
+    </div>
+  );
 }

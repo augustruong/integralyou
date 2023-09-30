@@ -10,9 +10,8 @@ import InterviewPage from './pages/EndUser/InterviewPage';
 import BlogPage from './pages/EndUser/BlogPage';
 
 import BlogManagePage from "./pages/Admin/BlogManagePage";
-import CreateUser from './pages/Admin/CreateUser';
-import EditUser from './pages/Admin/EditUser';
-import MyCKEditor from './pages/Admin/MyCKEditor';
+import CreatePost from './pages/Admin/CreatePost';
+import EditPost from './pages/Admin/EditPost';
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminHome from './pages/Admin/AdminHome';
 
@@ -40,10 +39,9 @@ function App() {
             <Route path="/admin/home" element={<AdminHome />} />
   
             <Route path="/admin/blogmanage" element={<BlogManagePage />} />
-            <Route path="/editor" element={<MyCKEditor />} />
-  
-            <Route path="/addnewuser" element={<CreateUser />} />
-            <Route path="user/:id/edit" element={<EditUser />} />
+            <Route path="/admin/createpost" element={<CreatePost />} />
+            <Route path="/admin/blogmanage/post/:id/edit" element={<EditPost />} />
+
         </Routes>
         {!hideLayoutPaths.includes(pathname) && (<Footer />)}
       </>

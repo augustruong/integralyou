@@ -12,32 +12,31 @@ export default function BlogManagePage(){
   
     function getPosts() {
         axios.get('http://127.0.0.1:5000/listposts').then(function(response) {
-            console.log(response.data);
             setPosts(response.data);
         });
     }
-    // const deleteUser = (id) => {
-    //     axios.delete(`http://127.0.0.1:5000/userdelete/${id}`).then(function(response){
-    //         console.log(response.data);
-    //         getUsers();
-    //     });
-    //     alert("Successfully Deleted");
-    // }
+    const deletePost = (id) => {
+        axios.delete(`http://127.0.0.1:5000/postdelete/${id}`).then(function(response){
+            getPosts();
+        });
+        alert("Successfully Deleted");
+    }
      
     return (
     <div>
         <div className="container h-100">
             <div className="row h-100">
                 <div className="col-12">
-                    <Link to="/editor" className="btn btn-success">Upload a new post</Link>
+                    <Link to="/admin/createPost" className="btn btn-success">Upload a new post</Link>
                     <h1>List Posts</h1>
                     <div>
                         {posts.map((post) =>
                             <div>
-                                <div>{post.cover}</div>
+                                <img src={`http://127.0.0.1:5000/file-get/${post.cover}`}/>
                                 <div>{post.title}</div>
                                 {parse(post.content)}
-
+                                <Link to={`post/${post.id}/edit`}>Edit</Link>
+                                <button onClick={() => deletePost(post.id)}>Delete</button>
                             </div>
                         )}
                     </div>
