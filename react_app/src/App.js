@@ -15,25 +15,20 @@ import EditPost from './pages/Admin/EditPost';
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminHome from './pages/Admin/AdminHome';
 
-import Header from "./components/Header"
-import Footer from "./components/Footer"
-
-const hideLayoutPaths = ["/admin/login", "/admin/home", "/admin/blogmanage", "/editor", "/addnewuser", "user/:id/edit"]
+import Layout from './components/Layout';
  
 function App() {
     const token = localStorage.getItem('token')
     const { pathname } = useLocation();
     return (
-      <>
-        {!hideLayoutPaths.includes(pathname) && (<Header />)}
         <Routes>
-            <Route path="/" element={<TopPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/message" element={<MessagePage />} />
-            <Route path="/program" element={<ProfilePage />} />
-            <Route path="/interview" element={<InterviewPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/faq" element={<ProfilePage />} />
+            <Route path="/" element={Layout(TopPage)} />
+            <Route path="/profile" element={Layout(ProfilePage)} />
+            <Route path="/message" element={Layout(MessagePage)} />
+            <Route path="/program" element={Layout(ProfilePage)} />
+            <Route path="/interview" element={Layout(InterviewPage)} />
+            <Route path="/blog" element={Layout(BlogPage)} />
+            <Route path="/faq" element={Layout(ProfilePage)} />
   
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/home" element={<AdminHome />} />
@@ -43,8 +38,6 @@ function App() {
             <Route path="/admin/blogmanage/post/:id/edit" element={<EditPost />} />
 
         </Routes>
-        {!hideLayoutPaths.includes(pathname) && (<Footer />)}
-      </>
     );
 }
     
