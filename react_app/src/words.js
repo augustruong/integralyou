@@ -26,7 +26,7 @@ const words = {
                 post: () => {},
             },
             post: {
-                add: `${process.env.REACT_APP_API_END_POINT}/postadd'`,
+                add: `${process.env.REACT_APP_API_END_POINT}/postadd`,
                 list: `${process.env.REACT_APP_API_END_POINT}/listposts`,
                 delete: (id) => `${process.env.REACT_APP_API_END_POINT}/postdelete/${id}`,
                 detail: (id) => `${process.env.REACT_APP_API_END_POINT}/postdetails/${id}`,

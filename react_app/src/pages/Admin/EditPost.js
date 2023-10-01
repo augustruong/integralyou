@@ -99,7 +99,7 @@ export default function EditPost(){
                 <h2>Edit Post</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <img src={words.api.file.get(inputs.cover)}/>
+                        <img src={words.api.admin.file.get(inputs.cover)}/>
                         <label>Title</label>
                         <input type="text" value={inputs.title} className="form-control" name="title" onChange={handleTitleChange} />
                         <button type="button" onClick={handleClick}>

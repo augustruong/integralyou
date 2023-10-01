@@ -28,7 +28,7 @@ export default function BlogManagePage(){
         <div className="container h-100">
             <div className="row h-100">
                 <div className="col-12">
-                    <Link to="/admin/createPost" className="btn btn-success">Upload a new post</Link>
+                    <Link to="/admin/createpost" className="btn btn-success">Upload a new post</Link>
                     <h1>List Posts</h1>
                     <div>
                         {posts.map((post) =>
