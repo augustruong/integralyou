@@ -3,8 +3,9 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
+import words from "../../words";
 
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = process.env.REACT_APP_API_END_POINT;
 const UPLOAD_ENDPOINT = "file-upload";
 const GETFILE_ENDPOINT = "file-get";
 
@@ -55,7 +56,7 @@ export default function EditPost(){
     }, [id]);
   
     function getPost(id) {
-        axios.get(`http://127.0.0.1:5000/postdetails/${id}`).then(function(response) {
+        axios.get(words.api.admin.post.detail(id)).then(function(response) {
             console.log(response.data)
             setInputs(response.data);
         });
@@ -75,7 +76,6 @@ export default function EditPost(){
             method: "post",
             body: body
         }).then(() => {
-            // setCoverSrc(`http://127.0.0.1:5000/file-get/${fileUploaded.name}`)
             setInputs(values => ({...values, ["cover"]: fileUploaded.name}));
         })
       };
@@ -85,7 +85,7 @@ export default function EditPost(){
       }
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.put(`http://127.0.0.1:5000/postupdate/${id}`, inputs).then(function(response){
+        axios.put(words.api.admin.post.update(id), inputs).then(function(response){
             navigate('/admin/blogmanage');
         });   
     }
@@ -99,7 +99,7 @@ export default function EditPost(){
                 <h2>Edit Post</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <img src={`http://127.0.0.1:5000/file-get/${inputs.cover}`}/>
+                        <img src={words.api.file.get(inputs.cover)}/>
                         <label>Title</label>
                         <input type="text" value={inputs.title} className="form-control" name="title" onChange={handleTitleChange} />
                         <button type="button" onClick={handleClick}>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import words from "../../words";
  
 export default function CreateUser(){
   
@@ -16,7 +17,7 @@ export default function CreateUser(){
     const handleSubmit = (event) => {
         event.preventDefault();
   
-        axios.post('http://127.0.0.1:5000/useradd', inputs).then(function(response){
+        axios.post(words.api.admin.user.add, inputs).then(function(response){
             console.log(response.data);
             navigate('/');
         });
