@@ -33,7 +33,7 @@ export default function BlogManagePage(){
                     <div>
                         {posts.map((post) =>
                             <div>
-                                {post.cover && <img src={words.api.file.get(post.cover)}/>}
+                                {post?.cover && <img src={words.api.admin.file.get(post.cover)}/>}
                                 <div>{post.title}</div>
                                 {parse(post.content)}
                                 <Link to={`post/${post.id}/edit`}>Edit</Link>
