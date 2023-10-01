@@ -23,7 +23,7 @@ const words = {
             login: `${process.env.REACT_APP_API_END_POINT}/admin/login`,
             file: {
                 get: (path) => `${process.env.REACT_APP_API_END_POINT}/file-get/${path}`,
-                post: () => {},
+                post: `${process.env.REACT_APP_API_END_POINT}/file-upload`
             },
             post: {
                 add: `${process.env.REACT_APP_API_END_POINT}/postadd`,
