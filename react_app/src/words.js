@@ -36,6 +36,23 @@ const words = {
                 add: `${process.env.REACT_APP_API_END_POINT}/useradd`,
             },
         }
+    },
+
+    post: {
+        form: {
+            errorOccurred: "An error occurred: ",
+            back: "＜ Back to List",
+            create: {
+                title: "Create New Post",
+            },
+            edit: {
+                title: "Edit Post",
+            },
+            title: "Title",
+            uploadCover: "Upload cover picture",
+            description: "Description",
+            save: "Save",
+        },
     }
 }
 
