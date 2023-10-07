@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink } from 'react-router-dom';
+import words from "../words";
 
 import './BlogItem.css'
 
 
 export default function BlogItem(props){
+    useEffect(() => {
+        console.log(props)
+    }, []);
     return(
         <div className="blog-item flex-column-start gap-base">
                 <NavLink to={`/`} className="thumbnail">
-                    <img src={process.env.PUBLIC_URL + `/img/trial.png`}/>
+                    {props?.cover && <img src={words.api.admin.file.get(props.cover)}/>}
                 </NavLink>
                 <div className="content flex-column-start gap-s">
-                    <NavLink to={`/`}><div className="title">あなたの人生のミッションを探します</div></NavLink>
-                    <div className="description">こんなふうに思っているかたはぜひ一度体験してみてください。</div>
-                    <div className="date">2021.10.6</div>
+                    <NavLink to={`/`}><div className="title">{props.title}</div></NavLink>
+                    <div className="description">{props.description}</div>
+                    <div className="date">{props.date}</div>
                 </div>
         </div>
     )

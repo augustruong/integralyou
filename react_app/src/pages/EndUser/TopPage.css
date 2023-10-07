@@ -162,7 +162,7 @@ section.newsletter .newsletter-form .newsletter-body button {
 section.blog .blog-list {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     gap: var(--space-xl);
     flex-wrap: wrap;
     justify-content: center;

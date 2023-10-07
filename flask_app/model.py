@@ -49,15 +49,17 @@ class Posts(db.Model):
     content = db.Column(db.String)
     date = db.Column(db.DateTime,default=datetime.datetime.now)
     cover = db.Column(db.String)
+    description = db.Column(db.String)
  
-    def __init__(self,title,cover,content):
+    def __init__(self,title,cover,description,content):
         self.title=title
         self.cover=cover
+        self.description=description 
         self.content=content
 
 class PostSchema(ma.Schema):
     class Meta:
-        fields = ('id','title','cover','content','date')
+        fields = ('id','title','cover','description','content','date')
 
 post_schema = PostSchema()
 posts_schema = PostSchema(many=True)

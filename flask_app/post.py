@@ -22,10 +22,12 @@ def postupdate(id):
  
     title = request.json['title']
     cover = request.json['cover']
+    description = request.json['description']
     content = request.json['content']
 
     post.title = title
     post.cover = cover
+    post.description = description
     post.content = content
  
     db.session.commit()
@@ -42,9 +44,10 @@ def postdelete(id):
 def postadd():
     title = request.json['title']
     cover = request.json['cover']
+    description = request.json['description']
     content = request.json['content']
 
-    posts = Posts(title,cover,content)
+    posts = Posts(title,cover,description,content)
     db.session.add(posts)
     db.session.commit()
 
