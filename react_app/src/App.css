@@ -125,6 +125,11 @@ button.primary:hover {
   align-items: start;
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
 .justify-center {justify-content: center;}
 .justify-space-btw {justify-content: space-between;}
 

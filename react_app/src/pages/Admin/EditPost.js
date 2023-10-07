@@ -49,7 +49,6 @@ export default function EditPost(){
     const navigate = useNavigate();
     const [inputs, setInputs] = useState([]);
     const {id} = useParams();
-    // const [coverSrc, setCoverSrc] = useState(null);
   
     useEffect(() => {
         getPost(id);
@@ -57,16 +56,16 @@ export default function EditPost(){
   
     function getPost(id) {
         axios.get(words.api.admin.post.detail(id)).then(function(response) {
-            console.log(response.data)
             setInputs(response.data);
         });
     }
   
     const hiddenFileInput = useRef(null);
 
-    const handleTitleChange = (event) => {
+    const handleTextChange = (event) => {
+        const name = event.target.name;
         const value = event.target.value;
-        setInputs(values => ({...values, ["title"]: value}));
+        setInputs(values => ({...values, [name]: value}));
     }
     const handleCoverChange = event => {
         const fileUploaded = event.target.files[0];
@@ -101,12 +100,13 @@ export default function EditPost(){
                     <div className="mb-3">
                         <img src={words.api.admin.file.get(inputs.cover)}/>
                         <label>Title</label>
-                        <input type="text" value={inputs.title} className="form-control" name="title" onChange={handleTitleChange} />
+                        <input type="text" value={inputs.title} name="title" onChange={handleTextChange} />
                         <button type="button" onClick={handleClick}>
                             Upload cover picture
                             <input hidden accept="image/*" multiple type="file" ref={hiddenFileInput} onChange={handleCoverChange} />
                         </button>
-                        
+                        <label>Description</label>
+                        <input type="text" value={inputs.description} name="description" onChange={handleTextChange} />
                     </div>
                     <CKEditor
                         editor={ Editor }
@@ -124,7 +124,6 @@ export default function EditPost(){
                     <button type="submit" name="add">Save</button>
                 </form>
             </div>
-            <div className="col-2"></div>
         </div>
         </div>
     </div>

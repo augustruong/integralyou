@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 import words from "../../words";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const API_URL = process.env.REACT_APP_API_END_POINT;
 const UPLOAD_ENDPOINT = "file-upload";
@@ -54,9 +55,10 @@ export default function CreatePost() {
 
     const hiddenFileInput = useRef(null);
 
-    const handleTitleChange = (event) => {
+    const handleTextChange = (event) => {
+        const name = event.target.name;
         const value = event.target.value;
-        setInputs(values => ({...values, ["title"]: value}));
+        setInputs(values => ({...values, [name]: value}));
     }
     const handleCoverChange = event => {
         const fileUploaded = event.target.files[0];
@@ -85,20 +87,30 @@ export default function CreatePost() {
       }
     
     return(
-        <div>
+        <div className="admin createNewPost">
             {error ? <p>An error occurred: {error.message}</p> : null}
-                <h2>Create New Post</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <img src={coverSrc}/>
-                        <label>Title</label>
-                        <input type="text" className="form-control" name="title" onChange={handleTitleChange} />
-                        <button type="button" onClick={handleClick}>
+                {/* <FontAwesomeIcon icon="fa-solid fa-arrow-left" /> */}
+                <div style={{marginBottom:"var(--space-s)"}}>
+                    <Link to={`/admin/blogmanage`} >＜ Back to List</Link>
+                </div>
+                <h2 style={{marginBottom:"var(--space-xl)"}}>Create New Post</h2>
+                <form onSubmit={handleSubmit} className="flex-row gap-xl">
+                    <div>
+                        <div className="thumbnail"><img src={coverSrc}/></div>
+                        <button type="button" onClick={handleClick} style={{marginTop:"var(--space-s)"}}>
                             Upload cover picture
                             <input hidden accept="image/*" multiple type="file" ref={hiddenFileInput} onChange={handleCoverChange} />
                         </button>
-                        
                     </div>
+                    <div style={{width:"676px"}}>
+                        <div>
+                            <label style={{display:"inline-block",width:"100px"}}>Title</label>
+                            <input type="text" name="title" onChange={handleTextChange} style={{width:"calc(100% - 100px)",marginBottom:"var(--space-s)"}}/>
+                        </div>
+                        <div>
+                            <label style={{display:"inline-block",width:"100px"}}>Description</label>
+                            <input type="text" name="description" onChange={handleTextChange} style={{width:"calc(100% - 100px)",marginBottom:"var(--space-s)"}}/>
+                        </div>
                     <CKEditor
                         editor={ Editor }
                         name="content"
@@ -110,8 +122,10 @@ export default function CreatePost() {
                         config={{
                             extraPlugins: [uploadPlugin]
                           }}
+                        
                     />
-                    <button type="submit" name="add">Save</button>
+                    <button type="submit" className="primary" name="add" style={{marginTop:"var(--space-base)"}}>Save</button>
+                    </div>
                 </form>
         </div>
     )
