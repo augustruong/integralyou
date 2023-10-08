@@ -29,13 +29,16 @@ export default function EditPost(){
     }
     const handleCoverChange = event => {
         const fileUploaded = event.target.files[0];
+        if(inputs.cover) axios.get(`${words.api.admin.file.remove(inputs.cover)}`).catch((error) => console.log(error))
         const body = new FormData();
         body.append("file", fileUploaded);
         fetch(`${words.api.admin.file.post}`, {
             method: "post",
             body: body
-        }).then(() => {
-            setInputs(values => ({...values, ["cover"]: fileUploaded.name}));
+        })
+        .then(response => response.json())
+        .then((result) => {
+            setInputs(values => ({...values, ["cover"]: result.filename}));
         })
       };
 
