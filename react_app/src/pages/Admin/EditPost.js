@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import PostForm from "../../components/PostForm";
 import words from "../../words";
+import { removeOldImg } from "./CreatePost";
 
 export default function EditPost(){
     const navigate = useNavigate();
@@ -29,13 +30,16 @@ export default function EditPost(){
     }
     const handleCoverChange = event => {
         const fileUploaded = event.target.files[0];
+        if(inputs.cover) axios.get(`${words.api.admin.file.remove(inputs.cover)}`).catch((error) => console.log(error))
         const body = new FormData();
         body.append("file", fileUploaded);
         fetch(`${words.api.admin.file.post}`, {
             method: "post",
             body: body
-        }).then(() => {
-            setInputs(values => ({...values, ["cover"]: fileUploaded.name}));
+        })
+        .then(response => response.json())
+        .then((result) => {
+            setInputs(values => ({...values, ["cover"]: result.filename}));
         })
       };
 
@@ -59,6 +63,7 @@ export default function EditPost(){
             handleCoverChange={handleCoverChange}
             handleSubmit={handleSubmit}
             handleClick={handleClick}
+            handleRemoveOldImg={removeOldImg}
             isEdit
         />
   );
