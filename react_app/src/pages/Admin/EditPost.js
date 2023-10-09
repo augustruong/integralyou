@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import PostForm from "../../components/PostForm";
 import words from "../../words";
+import { removeOldImg } from "./CreatePost";
 
 export default function EditPost(){
     const navigate = useNavigate();
@@ -62,6 +63,7 @@ export default function EditPost(){
             handleCoverChange={handleCoverChange}
             handleSubmit={handleSubmit}
             handleClick={handleClick}
+            handleRemoveOldImg={removeOldImg}
             isEdit
         />
   );

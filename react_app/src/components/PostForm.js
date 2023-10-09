@@ -49,6 +49,7 @@ const PostForm = ({
     handleCoverChange,
     handleSubmit,
     handleClick,
+    handleRemoveOldImg,
     isEdit,
 }) => {
     return (
@@ -82,6 +83,7 @@ const PostForm = ({
                     data={inputs.content}
                     onChange={(event,editor) => {
                         const data = editor.getData();
+                        handleRemoveOldImg(inputs.content, data)
                         console.log({event,editor,data});
                         setInputs(values => ({...values, ["content"]: data}));
                     }}
