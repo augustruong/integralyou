@@ -50,7 +50,7 @@ const PostForm = ({
     handleSubmit,
     handleClick,
     handleRemoveOldImg,
-    isEdit,
+    isEdit
 }) => {
     return (
         <div className="admin createNewPost">
@@ -60,23 +60,42 @@ const PostForm = ({
                 <Link to={`/admin/blogmanage`} >{words.post.form.back}</Link>
             </div>
             <h2 style={{marginBottom:"var(--space-xl)"}}>{isEdit ? words.post.form.edit.title : words.post.form.create.title}</h2>
+            <div>
+                <label style={{display:"inline-block",width:"100px"}}>Category</label>
+                <select name="categoryId" onChange={handleTextChange}>
+                    <option value={1} selected={isEdit && inputs.categoryId===1 ? "selected" : "" }>Blog</option>
+                    <option value={2} selected={isEdit && inputs.categoryId===2 ? "selected" : "" }>Interview</option>
+                    <option value={3} selected={isEdit && inputs.categoryId===3 ? "selected" : "" }>News</option>
+                </select>
+            </div>
             <form onSubmit={handleSubmit} className="flex-row gap-xl">
-                <div>
-                    <div className="thumbnail"><img src={words.api.admin.file.get(inputs.cover)}/></div>
-                    <button type="button" onClick={handleClick} style={{marginTop:"var(--space-s)"}}>
-                        {words.post.form.uploadCover}
-                        <input hidden accept="image/*" multiple type="file" ref={hiddenFileInput} onChange={handleCoverChange} />
-                    </button>
-                </div>
+                {/* {(isBlog || isInterview) && */}
+                    <div>
+                        <div className="thumbnail"><img src={words.api.admin.file.get(inputs.cover)}/></div>
+                        <button type="button" onClick={handleClick} style={{marginTop:"var(--space-s)"}}>
+                            {words.post.form.uploadCover}
+                            <input hidden accept="image/*" multiple type="file" ref={hiddenFileInput} onChange={handleCoverChange} />
+                        </button>
+                    </div>
+                {/* } */}
                 <div style={{width:"676px"}}>
                     <div>
                         <label style={{display:"inline-block",width:"100px"}}>{words.post.form.title}</label>
                         <input type="text" name="title" value={inputs.title} onChange={handleTextChange} style={{width:"calc(100% - 100px)",marginBottom:"var(--space-s)"}}/>
                     </div>
+                    {/* {isInterview &&
                     <div>
-                        <label style={{display:"inline-block",width:"100px"}}>{words.post.form.description}</label>
-                        <input type="text" name="description" value={inputs.description} onChange={handleTextChange} style={{width:"calc(100% - 100px)",marginBottom:"var(--space-s)"}}/>
+                        <label style={{display:"inline-block",width:"100px"}}>{words.post.form.info}</label>
+                        <input type="text" name="info" value={inputs.info} onChange={handleTextChange} style={{width:"calc(100% - 100px)",marginBottom:"var(--space-s)"}}/>
                     </div>
+                    } */}
+                    {/* {(isBlog || isInterview) && */}
+                        <div>
+                            <label style={{display:"inline-block",width:"100px"}}>{words.post.form.description}</label>
+                            <input type="text" name="description" value={inputs.description} onChange={handleTextChange} style={{width:"calc(100% - 100px)",marginBottom:"var(--space-s)"}}/>
+                        </div>
+                    {/* } */}
+                    
                 <CKEditor
                     editor={ Editor }
                     name="content"

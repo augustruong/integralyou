@@ -5,7 +5,8 @@ from flask import Flask
 from model import db, ma
 from post import post
 from auth import auth
-from user import user
+from subscriber import subscriber
+from letter import letter
 from file import file
 
 UPLOAD_FOLDER = './img'
@@ -29,5 +30,6 @@ ma.init_app(app)
 
 app.register_blueprint(post)
 app.register_blueprint(auth)
-app.register_blueprint(user)
+app.register_blueprint(subscriber)
+app.register_blueprint(letter)
 app.register_blueprint(file)

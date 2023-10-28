@@ -1,12 +1,14 @@
-.interview { padding-top: 200px; padding-bottom: 200px;}
-section { height: 100vh; max-height: 900px;}
+.interview { padding-top: 150px; }
 
-.interview > .interview-list {
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    gap: var(--space-xl) var(--space-l);
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 75%;
+.interview .header {
+    text-align: center;
+}
+.interview .header .p-title {
+    margin: var(--space-base);
+}
+
+.interview .interview-list.grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: var(--space-xl);
 }

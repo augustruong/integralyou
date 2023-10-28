@@ -17,11 +17,9 @@ export default function CreateUser(){
     const handleSubmit = (event) => {
         event.preventDefault();
   
-        axios.post(words.api.admin.user.add, inputs).then(function(response){
+        axios.post(words.api.admin.subscriber.add, inputs).then(function(response){
             console.log(response.data);
-            navigate('/');
-        });
-          
+        }); 
     }
      
     return (

@@ -5,6 +5,9 @@
   --color-light-gray: #BDBDBD;
   --color-white: #fff;
 
+  --color-green: #6FCF97;
+  --color-purple: #BB6BD9;
+
   /* Space - Sizes */
   --space-none: 0;
   --space-xs: 4px;
@@ -42,3 +45,5 @@ body, html {
 
 .color-primary-pink {color: var(--color-primary-pink);}
 .color-coral {color: var(--color-coral);}
+.color-green {color: var(--color-green);}
+.color-purple {color: var(--color-purple);}

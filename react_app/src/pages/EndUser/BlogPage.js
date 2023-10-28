@@ -23,10 +23,17 @@ export default function BlogPage(){
 
     return(
         <div className="blog layout-1">
-            <div className="p-title">ブログ</div>
-            <div className="blog-list">
-            {posts.sort((a, b) => a.date < b.date ? 1 : -1).slice(0,3).map((post) =>
-                <BlogItem title={post.title} cover={post.cover} description={post.description} date={post.date}/>
+            <div className="header">
+                <div className="p-title">ブログ</div>
+                <div className="spark p24"></div>
+            </div>
+            <div className="blog-list grid">
+            {posts.sort((a, b) => a.date < b.date ? 1 : -1).map((post) =>
+                <>
+                    {post.categoryId === 1 && 
+                        <BlogItem title={post.title} cover={post.cover} description={post.description} date={post.date}/>
+                    }
+                </>
             )}
             </div>
             

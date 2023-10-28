@@ -1,4 +1,4 @@
-.admin.blogList, .admin.createNewPost {
+.admin.blogList, .admin.createNewPost, .admin.letters, .admin.subscribers {
     padding-top: 5%;
     max-width: 1000px;
     margin: 0 auto;
@@ -7,18 +7,17 @@
     width: 50px;
     text-align: center;
 }
-.dbTable .cover {
-    width: 100px;
-    height: 100px;
+.dbTable tbody .cover {
+    width: 150px;
+    height: 150px;
 }
 .dbTable .cover>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
-.dbTable .title, .dbTable .description, .dbTable .date, .dbTable .actions {
-    padding-left: var(--space-m);
+.dbTable thead th,.dbTable tbody td {
+    padding: 15px;
 }
 
 .thumbnail {
@@ -32,4 +31,62 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.admin.blogList {
+    padding-bottom: 100px;
+}
+
+.admin.blogList .news{
+    padding-top: 50px;
+}
+
+.dbTable .title {
+    width: 400px;
+}
+
+.dbTable .content {
+    width: 500px;
+}
+
+.dbTable .date {
+    width: 110px;
+}
+.dbTable .actions {
+    width: 110px;
+}
+.dbTable td {
+    vertical-align: top;
+}
+.dbTable td:not(.cover) {
+    padding-top: 15px;
+}
+.dbTable td.cover {
+    padding-left: 0;
+}
+table thead {
+    height: 60px;
+    background-color: #FFEDEA;
+}
+.dbTable tr:nth-child(even) {
+    background-color: #ffedea6b;
+}
+
+
+/* ------------------------------------------------------ admin/home */
+.admin.home {
+    width: 280px;
+    margin: 0 auto;
+    padding-top: 10%;
+}
+.admin.home .body {
+    gap: var(--space-s);
+    margin-top: var(--space-l);
+}
+.admin.home button {
+    width: 100%;
+}
+
+.dbTable .index {
+    width: 70px;
 }

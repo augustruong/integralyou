@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Parallax } from 'react-scroll-parallax';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import words from "../../words";
 
 import BlogItem from '../../components/BlogItem'
 
@@ -8,9 +10,38 @@ import './TopPage.css'
 
 export default function TopPage(){
     const navigate = useNavigate();
+    const [posts, setPosts] = useState([]);
 
+    const [inputs, setInputs] = useState([]);
+  
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}));
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+  
+        axios.post(words.api.admin.subscriber.add, inputs).then(function(response){
+            console.log(response.data);
+        }); 
+    }
+
+    useEffect(() => {
+        getPosts();
+    }, []);
+  
+    function getPosts() {
+        axios.get(words.api.admin.post.list).then(function(response) {
+            setPosts(response.data);
+        });
+    }
     return(
         <div className="top-page">
+            <a className="news-icon" href='/news'>
+                <img src={process.env.PUBLIC_URL + `/img/icon/news.svg`}/>
+                <div className="text">お知らせ</div>   
+            </a>
             <section className="hero">
                 <div className="top-banner">生き方とキャリアに迷うあなたへ</div>
                 <div className="kv-wrapper">
@@ -19,7 +50,9 @@ export default function TopPage(){
             </section>
             <section className="video layout-1">
                 <iframe width="810" height="460" src="https://www.youtube.com/embed/WrxqqvW1wKk?si=4uTgOSM_sJszIIE8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <button className="primary">プロフィールを見る</button>
+                <a href='/profile'>
+                    <button className="primary">プロフィールを見る</button>
+                </a>
             </section>
             <section className="message layout-2">
                 <div className="img-wrapper">
@@ -41,7 +74,9 @@ export default function TopPage(){
                     二人三脚で<br/>
                     あなたが心から望む人生を実現しましょう
                     </p>
-                    <button className="primary">どこかに入れたい?</button>
+                    <a href='/message'>
+                        <button className="primary">もっと見る</button>
+                    </a>
                 </div>
             </section>
             <section className="service layout-1">
@@ -54,7 +89,9 @@ export default function TopPage(){
                         とおして、生き方やキャリアについてあなたが抱えている課題の<br/>
                         解消を目指すマンツーマンのサポートプログラムです。
                     </p>
-                    <button className="primary">詳しくはこちら</button>
+                    <a href='/program'>
+                        <button className="primary">詳しくはこちら</button>
+                    </a>
                 </div>
                 <div className="img-wrapper">
                     <img src={process.env.PUBLIC_URL + `/img/service.png`}/>
@@ -126,24 +163,24 @@ export default function TopPage(){
             </section>
             <section className="trial layout-1">
                 <div className="content-wrapper flex-column-ct gap-xl">
-                    <div className="p-title">60分セッション</div>
+                    <div className="p-title">60分コーチングセッション</div>
                     <p className="text-align-ct">
-                        やりたいことの種を見つける！<br/>
-                        「人生のミッション探索コーチング」の一部を体験できるセッションです。<br/>
-                        60分のセッションですが、充実した内容となっています。
+                        やりたいことの種を見つける！ 自分が今どんなことを考えているのか知りたい、<br/>
+                        <span className="bold color-primary-pink">integral you </span>のコーチングを受けてみたい、という方のためのコーチングです。<br/>
+                        60分のミニセッションですが、充実した内容となっています。（おひとり様1回限り）
                     </p>
-                    <button className="primary">今すぐ体験しよう</button>
+                    <a href='/contact'>
+                        <button className="primary">今すぐ体験したい</button>
+                    </a>
                 </div>
                 <div className="img-wrapper flex-row-ct">
                     <img src={process.env.PUBLIC_URL + `/img/trial.png`}/>
                     <div>
-                        <div className="sub-title">体験セッションで得られるもの</div>
+                        <div className="sub-title">60分コーチングセッションで得られるもの</div>
                         <div className="bullet-list">
                             <div className="bullet-point">自分の現在地が把握できる</div>
                             <div className="bullet-point">自分の課題がわかる</div>
                             <div className="bullet-point">今後の方向性がわかる</div>
-                            <div className="bullet-point">マンツーマンレッスンの雰囲気がわかる</div>
-                            <div className="bullet-point">サービス提供者がどのような人かわかる</div>
                         </div>
                     </div>
                 </div>
@@ -156,7 +193,9 @@ export default function TopPage(){
                             コースは「6ヵ月コース」と「4ヵ月コース」の２つ。<br/>
                             コースをご選択される前に、「体験セッション」を受けていただくことをおすすめしています。
                         </p>
-                        <button className="primary">詳しくはこちら</button>
+                        <a href='/program'>
+                            <button className="primary">詳しくはこちら</button>
+                        </a>
                     </div>
                 </div>
                 <div className="img-wrapper flex-row-ct justify-space-btw">
@@ -189,11 +228,13 @@ export default function TopPage(){
             <section className="blog layout-1">
                 <div className="p-title">ブログ</div>
                 <div className="blog-list">
-                    <BlogItem />
-                    <BlogItem />
-                    <BlogItem />
+                    {posts.filter(item => item.categoryId === 1).sort((a, b) => a.date < b.date ? 1 : -1).slice(0,3).map((post) =>
+                        <BlogItem title={post.title} cover={post.cover} description={post.description} date={post.date}/>
+                    )}
                 </div>
-                <button className="primary">すべてブログを見る</button>
+                <a href='/blog'>
+                    <button className="primary">もっと見る</button>
+                </a>
             </section>
             <section className="contact layout-1">
                 <div className="p-title">不明点がありますか？</div>
@@ -203,26 +244,30 @@ export default function TopPage(){
                     <img className="mark2" src={process.env.PUBLIC_URL + `/img/mark2.png`}/>
                 </div>
                 <div className="flex-row-ct gap-base">
-                    <button className="primary">FAQ を見る</button>
-                    <button className="">お問い合わせ</button>
+                    <a href='/faq'>
+                        <button className="primary">FAQ を見る</button>
+                    </a>
+                    <a href='/contact'>
+                        <button>お問い合わせ</button>
+                    </a>
                 </div>
             </section>
             <section className="newsletter layout-2">
                 <div className="img-wrapper">
                     <img src={process.env.PUBLIC_URL + `/img/IMG_3742.png`}/>
                 </div>
-                <form className="newsletter-form">
+                <form className="newsletter-form" onSubmit={handleSubmit}>
                     <header className="newsletter-header">
                         <div className="p-title">newsletter</div>
                         <div>Eメールアドレスを登録すると、毎週ニュースや最新情報が届きます。</div>
                     </header>    
                     <div className="newsletter-body">
                         <div className="flex-row-ct gap-s">
-                            <input type="text" id="lname" name="lname" placeholder="氏"/>
-                            <input type="text" id="fname" name="fname" placeholder="名"/>
+                            <input type="text" id="lname" name="lastname" placeholder="氏" onChange={handleChange}/>
+                            <input type="text" id="fname" name="firstname" placeholder="名" onChange={handleChange}/>
                         </div>
-                        <input type="email" id="email" name="email" placeholder="メールアドレス"/>
-                        <button className="primary">登録</button>
+                        <input type="email" id="email" name="email" placeholder="メールアドレス" className="full" onChange={handleChange}/>
+                        <button type="submit" name="add" className="primary">登録</button>
                     </div>
                 </form>
             </section>

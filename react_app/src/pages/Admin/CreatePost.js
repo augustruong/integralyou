@@ -45,7 +45,6 @@ export default function CreatePost() {
         })
         .then(response => response.json())
         .then((result) => {
-            console.log(result)
             setInputs(values => ({...values, ["cover"]: result.filename}));
         })
  
@@ -74,6 +73,7 @@ export default function CreatePost() {
             handleSubmit={handleSubmit}
             handleClick={handleClick}
             handleRemoveOldImg={removeOldImg}
+            isBlog
         />
     )
 }

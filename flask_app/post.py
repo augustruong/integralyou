@@ -2,6 +2,7 @@ from flask import (
     Blueprint, request, jsonify
 )
 from model import Posts, post_schema, posts_schema, db
+import json
 
 post = Blueprint('post', __name__)
 
@@ -21,15 +22,18 @@ def postupdate(id):
     post = Posts.query.get(id)
  
     title = request.json['title']
+    info = request.json['info']
     cover = request.json['cover']
     description = request.json['description']
     content = request.json['content']
+    categoryId = request.json['categoryId']
 
     post.title = title
     post.cover = cover
     post.description = description
     post.content = content
- 
+    post.categoryId = categoryId
+
     db.session.commit()
     return post_schema.jsonify(post)
     
@@ -42,12 +46,14 @@ def postdelete(id):
 
 @post.route('/postadd',methods=['POST'])
 def postadd():
+    categoryId = request.json['categoryId']
     title = request.json['title']
-    cover = request.json['cover']
+    cover = request.json['cover'] if 'cover' in request.json else None
+    info = request.json['info'] if 'info' in request.json else None
     description = request.json['description']
     content = request.json['content']
 
-    posts = Posts(title,cover,description,content)
+    posts = Posts(categoryId,title,cover,info,description,content)
     db.session.add(posts)
     db.session.commit()
 

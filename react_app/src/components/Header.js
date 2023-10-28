@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import logo from '../logo.png';
 
@@ -72,7 +72,9 @@ export default class Header extends React.Component {
                     </ul>
                 </nav>
 
-                <button>お問い合わせ</button>
+                <Link to='/contact'>
+                    <button>お問い合わせ</button>
+                </Link>
             </header>    
         )
     }

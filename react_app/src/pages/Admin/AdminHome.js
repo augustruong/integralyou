@@ -11,19 +11,21 @@ export default function AdminHome(){
         }
     }, []);
     return(
-        <div>
-        <div className="container h-100">
-            <div className="row">
-                <div className="col-2"></div>
-                <div className="col-8">
+        <div className="admin home">
+                <div className="header">
                     <h1>Welcome Home</h1>
                 </div>
-                <div className="col-2">
-                    <Link to="/admin/blogManage">Blog Management</Link>
-
+                <div className="body flex-column">
+                    <Link to="/admin/blogManage">
+                        <button className="primary">Posts Management</button>
+                    </Link>
+                    <Link to="/admin/lettersManage">
+                        <button className="primary">Letters Management</button>
+                    </Link>
+                    <Link to="/admin/subscribersManage">
+                        <button className="primary">Subscriber Management</button>
+                    </Link>
                 </div>
-            </div>
         </div>
-    </div>
     )
 }

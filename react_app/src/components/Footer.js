@@ -27,10 +27,10 @@ export default function Footer() {
                     <div className='sns-wrapper'>
                         <div className='label'>FOLLOW ME ON SNS</div>
                         <div className='sns-list'>
-                            <NavLink to='/'>
+                            <NavLink to='https://www.instagram.com/yu.jaeng.i/' target='_blank'>
                                 <img src={process.env.PUBLIC_URL + `/img/sns/Instagram_Logo.png`}/>
                             </NavLink>
-                            <NavLink to='/'>
+                            <NavLink to='https://ameblo.jp/integralyou/' target='_blank'>
                                 <img src={process.env.PUBLIC_URL + `/img/sns/Ameba_Logo.png`}/>
                             </NavLink>
                         </div>

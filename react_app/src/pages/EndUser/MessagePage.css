@@ -1,9 +1,74 @@
-.top-page { padding-top: 110px; }
-section { height: 100vh; max-height: 900px;}
+/* .message{ padding-top: 90px; } */
+.message section { height: 100vh; max-height: 900px;}
 
-section.intro > div {
+.message section.intro > div {
     width: 50%;
 }
-section.intro > .content-wrapper {
+.message section.intro > .content-wrapper {
     padding-left: 10%;
 }
+.message section.second {
+    margin-bottom: 100px;
+}
+
+.message .frame{
+    border-radius: 4px;
+    border: 1px solid var(--color-primary-pink);
+    background: #FFF;
+    box-shadow: 7px 7px 0px 0px var(--color-primary-pink);
+    padding: var(--space-xl);
+}
+
+.messageBox {
+    position: relative;
+    margin-top: var(--space-base);
+}
+.messageBox .spark {
+    position: absolute;
+    top: -27px;
+    left: 50%;
+    animation: spinWithX 5s infinite linear;
+}
+
+.message section.second button {
+    margin-top: var(--space-xl);
+}
+.slidingText {
+    color: var(--color-primary-pink);
+    font-size: 38px;
+    font-family: "MotoyaExAporo W55 W6 mono";
+}
+.m-scroll {
+    display: flex;
+    position: relative;
+    width: 100vw;
+    height: 120px;
+    margin: auto;
+    overflow: hidden;
+    z-index: 1;
+}
+.m-scroll__title {
+      display: flex;
+      position: absolute;
+      top: 0;
+      left: 0;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      height: 100%;
+      white-space: nowrap;
+      transform: scale(2);
+      transition: all 1s ease;
+}
+.m-scroll__title > div {
+    display: flex;
+    animation: scrollText 60s infinite linear;
+  }
+  
+  /*div:hover {
+    animation-play-state: paused;
+  }*/
+  @keyframes scrollText {
+    from   { transform: translateX(0%); }
+    to { transform: translateX(-50%); }
+  }

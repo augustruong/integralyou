@@ -1,0 +1,181 @@
+.program{ padding-top: 90px; }
+.program section { height: 100vh; }
+
+.program section.intro {
+    text-align: center;
+    max-height: 900px;
+}
+.program section.intro .p-title {
+    margin: var(--space-xl);
+}
+.program section.intro > .layout-2 {
+    padding: 50px 0 150px 0;
+    background-color: #FFEDEA;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 100px;
+}
+.program section.intro > .layout-2 > .img-wrapper {
+    width: 50%;
+}
+.program section.intro > .layout-2 > .img-wrapper > img {
+    width: 100%;
+    object-fit: cover;
+}
+.program section.intro > .layout-2 > .content-wrapper {
+    /* text-align: left; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: 100%;
+}
+.program section.intro > .layout-2 > .content-wrapper img {
+    margin-bottom: 70px;
+    width: 75px;
+}
+.program section.intro > .layout-2 > .content-wrapper > div {
+    margin-bottom: var(--space-base);
+}
+.program section.intro > .layout-2 > .content-wrapper > p {
+    width: 462px;
+    padding-bottom: var(--space-l);
+}
+
+.program section.features {
+    border: 1px solid var(--color-primary-pink);
+    background-color: var(--color-white);
+    width: 1100px;
+    height: 315px;
+    padding-top: var(--space-l);
+    margin: 0 auto;
+    margin-top: -70px;
+}
+.program section.features > img {
+    width: 24px;
+    margin-top: var(--space-base);
+    margin-bottom: var(--space-l);
+}
+.program section.features .feature-item {
+    position: relative;
+    margin-top: 18%;
+}
+
+.program section.features .feature-item > img:nth-child(1) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: floatAbsolute 5s infinite;
+}
+.program section.features .feature-item:nth-child(1) > img:nth-child(1) {
+    top: -175%;
+}
+.program section.features .feature-item:nth-child(2) > img:nth-child(1) {
+    top: -140%;
+}
+.program section.features .feature-item:nth-child(3) > img:nth-child(1) {
+    top: -170%;
+}
+
+.program section.features .feature-item:not(:last-child) {
+    margin-right: var(--space-xxl);
+}
+
+.program section.steps {
+    margin-top: 250px;
+    height: 100%;
+}
+.program section.steps .header {
+    z-index: 100;
+    width: 100%;
+}
+.program section.steps .header > .flex-column-ct > p {
+    margin-bottom: var(--space-l);
+}
+
+.program section.steps .content {
+    background-color: #FFEDEA;
+    width: 100%;
+    padding: 100px 130px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-l);
+    margin-top: -10px;
+    z-index: 99;
+}
+.program section.steps .content .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-m);
+}
+
+.program section.steps .content .step-item .label {
+    color: var(--color-primary-pink);
+    font-size: 18px;
+    font-family: "MotoyaExAporo W55 W6 mono";
+    padding: 15px 120px 20px 105px;
+    margin-top: var(--space-m);
+    background-image: url("/public/img/program/stepArrow.svg");
+    background-size: cover;
+    background-position: 0%;
+}
+.program section.courses {
+    max-height: none;
+    height: auto;
+    background-color: #FFF8F7;
+    padding-top: 100px;
+    padding-bottom: 150px;
+}
+.program section.courses .gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 1050px;
+}
+.program section.courses .header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+.program .header .p-title {
+    margin-bottom: var(--space-base);
+}
+.program section.courses .header p {
+    margin-bottom: var(--space-m);
+}
+
+.program section.process {
+    height: 100%;
+    padding-top: 7%;
+    padding-bottom: 10%;
+}
+.program section.process .layout-1 {
+    gap: var(--space-s);
+}
+.program section.process .gallery .flex-row-ct {
+    justify-content: center;
+    gap: var(--space-xl);
+}
+.program section.process .gallery .flex-row-ct:last-child {
+    margin-top: 7px;
+}
+.program section.process .frame {
+    width: 60%;
+    max-width: 725px;
+    padding: 20px;
+    border: 1px solid var(--color-primary-pink);
+    background: #FFF;
+    box-shadow: 7px 7px 0px 0px var(--color-primary-pink);
+    border-radius: 4px;
+}
+
+.program section.schedule {
+    margin-top: 100px;
+    margin-bottom: 150px;
+}
+
+.program .header {
+    text-align: center;
+}

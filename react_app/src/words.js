@@ -8,11 +8,15 @@ const words = {
             interview: "/interview",
             blog: "/blog",
             faq: "/faq",
+            news: "/news",
+            contact: "/contact"
         },
         admin: {
             login: "/admin/login",
             home: "/admin/home",
-            blogmanage: "/admin/blogmanage",
+            blogmanage: "/admin/blogManage",
+            lettersmanage: "/admin/lettersManage",
+            subscribersmanage: "/admin/subscribersManage",
             createpost: "/admin/createpost",
             editpost: "/admin/blogmanage/post/:id/edit",
         }
@@ -33,9 +37,14 @@ const words = {
                 detail: (id) => `${process.env.REACT_APP_API_END_POINT}/postdetails/${id}`,
                 update: (id) => `${process.env.REACT_APP_API_END_POINT}/postupdate/${id}`,
             },
-            user: {
-                add: `${process.env.REACT_APP_API_END_POINT}/useradd`,
+            subscriber: {
+                add: `${process.env.REACT_APP_API_END_POINT}/subscriberadd`,
+                list: `${process.env.REACT_APP_API_END_POINT}/listsubscribers`,
             },
+            letter: {
+                add: `${process.env.REACT_APP_API_END_POINT}/letteradd`,
+                list: `${process.env.REACT_APP_API_END_POINT}/listletters`,
+            }
         }
     },
 
@@ -49,10 +58,12 @@ const words = {
             edit: {
                 title: "Edit Post",
             },
+            category: "Category",
             title: "Title",
+            info: "Info",
             uploadCover: "Upload cover picture",
             description: "Description",
-            save: "Save",
+            save: "Save"
         },
     }
 }
