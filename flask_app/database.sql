@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `admin`
 --
-
+DROP TABLE IF EXISTS  `admin`;
 CREATE TABLE `admin` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -46,6 +46,7 @@ INSERT INTO `admin` (`username`, `password`, `id`) VALUES
 -- Table structure for table `category`
 --
 
+DROP TABLE IF EXISTS  `category`;
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL
@@ -66,6 +67,7 @@ INSERT INTO `category` (`id`, `name`) VALUES
 -- Table structure for table `letters`
 --
 
+DROP TABLE IF EXISTS  `letters`;
 CREATE TABLE `letters` (
   `id` int(11) NOT NULL,
   `firstname` varchar(50) NOT NULL,
@@ -91,6 +93,7 @@ INSERT INTO `letters` (`id`, `firstname`, `lastname`, `email`, `phone`, `subject
 -- Table structure for table `posts`
 --
 
+DROP TABLE IF EXISTS  `posts`;
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
@@ -121,6 +124,7 @@ INSERT INTO `posts` (`id`, `title`, `content`, `date`, `cover`, `description`, `
 -- Table structure for table `subscribers`
 --
 
+DROP TABLE IF EXISTS  `subscribers`;
 CREATE TABLE `subscribers` (
   `id` int(11) NOT NULL,
   `firstname` varchar(50) NOT NULL,

@@ -2,7 +2,7 @@ from flask import (
     Blueprint, request, jsonify
 )
 from model import Posts, post_schema, posts_schema, db
-import json
+from file import remove_file
 
 post = Blueprint('post', __name__)
 
@@ -40,6 +40,7 @@ def postupdate(id):
 @post.route('/postdelete/<id>',methods=['DELETE'])
 def postdelete(id):
     post = Posts.query.get(id)
+    remove_file(post.cover)
     db.session.delete(post)
     db.session.commit()
     return post_schema.jsonify(post)
