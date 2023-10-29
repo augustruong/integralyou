@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Parallax } from 'react-scroll-parallax';
 import axios from "axios";
 import { Link,useNavigate } from "react-router-dom";
 import words from "../../words";

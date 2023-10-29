@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import './FAQPage.scss'
+import './FAQPage.css'
 import AccordionItem from "../../components/AccordionItem";
 
 export default function FAQPage(){
