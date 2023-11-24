@@ -1,23 +1,9 @@
-.news { padding-top: 150px; }
-
-.news .header {
-    text-align: center;
-}
-.news .header .p-title {
-    margin: var(--space-base);
-}
-  
 .news .news-list {
     display: grid;
     grid-template-columns: auto;
     gap: 80px;
 }
-.news .news-list .news-item {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: var(--space-xl);
-}
+
 .news .news-list .news-item img {
     width: 54px;
 }

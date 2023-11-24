@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link,useNavigate } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import words from "../../words";
 
 import BlogItem from '../../components/BlogItem'
+import SubscribeForm from "../../components/SubscribeForm";
 
 import './TopPage.css'
+import '../../App.css'
+
 
 export default function TopPage(){
     const navigate = useNavigate();
+    const [device,setDevice] = useState("pc");
     const [posts, setPosts] = useState([]);
-
     const [inputs, setInputs] = useState([]);
-  
+    const [offsetY,setOffsetY] = useState(0);
+    const handleScroll = () => setOffsetY(window.pageYOffset);
+    const [submitted,setSubmitted] = useState(false);
+
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -22,14 +30,22 @@ export default function TopPage(){
         event.preventDefault();
   
         axios.post(words.api.admin.subscriber.add, inputs).then(function(response){
-            console.log(response.data);
+            setSubmitted(true)
         }); 
     }
 
     useEffect(() => {
         getPosts();
+        window.addEventListener('resize', handleResize);
+
+        Aos.init({duration: 2000});
+        window.addEventListener("scroll",handleScroll);
+        return() => window.removeEventListener("scroll", handleScroll);
     }, []);
-  
+
+    function handleResize() {
+        if (window.innerWidth <= 768) { setDevice("mb") } else { setDevice("pc") }
+    }
     function getPosts() {
         axios.get(words.api.admin.post.list).then(function(response) {
             setPosts(response.data);
@@ -44,7 +60,7 @@ export default function TopPage(){
             <section className="hero">
                 <div className="top-banner">生き方とキャリアに迷うあなたへ</div>
                 <div className="kv-wrapper">
-                    <img src={process.env.PUBLIC_URL + `/img/keyvisual.png`}/>
+                    <img className="mx-auto" src={process.env.PUBLIC_URL + `/img/keyvisual.png`}/>
                 </div>
             </section>
             <section className="video layout-1">
@@ -53,54 +69,58 @@ export default function TopPage(){
                     <button className="primary">プロフィールを見る</button>
                 </a>
             </section>
-            <section className="message layout-2">
-                <div className="img-wrapper">
-                    <img src={process.env.PUBLIC_URL + `/img/message-img.png`}/>
-                </div>
-                <div className="content-wrapper flex-column-start gap-l">
-                    <div className="p-title">メッセージ</div>
-                    <p>生き方とキャリアを考えるとき<br/>
-                    「ひとりで考えても答えが出ない問題」に<br/>
-                    ぶつかることが必ずあります。<br/><br/>
+            <div className="message layout-2">
+                <section className="intro layout-2">
+                    <div className="img-wrapper" data-aos="fade-down">
+                        <img src={process.env.PUBLIC_URL + `/img/message-you-${device}.png`}
+                            className="w-100pc" data-aos="fade-right"/>
+                    </div>
+                    <div className="content-wrapper flex-column-start gap-l">
+                        <div className="p-title">メッセージ</div>
+                        <p>生き方とキャリアを考えるとき<br/>
+                        「ひとりで考えても答えが出ない問題」に<br/>
+                        ぶつかることが必ずあります。<br/><br/>
 
-                    もし今あなたが<br/>
-                    ひとりで悩み続けているなら<br/><br/>
+                        もし今あなたが<br/>
+                        ひとりで悩み続けているなら<br/><br/>
 
-                    人生のミッションを見つける専門家<br/>
-                    <span className="primary-pink bold">integral you</span> が<br/>
-                    全力でサポートします<br/><br/>
+                        人生のミッションを見つける専門家<br/>
+                        <span className="primary-pink bold">integral you</span> が<br/>
+                        全力でサポートします<br/><br/>
 
-                    二人三脚で<br/>
-                    あなたが心から望む人生を実現しましょう
-                    </p>
-                    <a href='/message'>
-                        <button className="primary">もっと見る</button>
-                    </a>
-                </div>
-            </section>
-            <section className="service layout-1">
-                <div className="content-wrapper flex-column-ct gap-l">
+                        二人三脚で<br/>
+                        あなたが心から望む人生を実現しましょう
+                        </p>
+                        <a href='/message'>
+                            <button className="primary">もっと見る</button>
+                        </a>
+                    </div>
+                </section>
+            </div>
+            <section className="service layout-1 mt-100">
+                <div className="content-wrapper flex-column-ct gap-l px-5pc">
                     <div className="p-title">サービス概要</div>
-                    <p className="text-align-ct">
-                        <span className="primary-pink bold">integral you</span> は、あなたが “人生のミッションを生きる” ための<br/>
+                    <p className="p-center p-left">
+                        <span className="primary-pink bold">integral you</span> は、あなたが “人生のミッションを生きる” ための
+                        {window.innerWidth > 768 ? <br/> : ""}
                         「コーチング」や「グループ講座」を提供しています。<br/><br/>
-                        コーチングやカウンセリングのメソッドを援用したセッションを<br/>
-                        とおして、生き方やキャリアについてあなたが抱えている課題の<br/>
+                        コーチングやカウンセリングのメソッドを援用したセッションを {window.innerWidth > 768 ? <br/> : ""}
+                        とおして、生き方やキャリアについてあなたが抱えている課題の {window.innerWidth > 768 ? <br/> : ""}
                         解消を目指すマンツーマンのサポートプログラムです。
                     </p>
                     <a href='/program'>
                         <button className="primary">詳しくはこちら</button>
                     </a>
                 </div>
-                <div className="img-wrapper">
-                    <img src={process.env.PUBLIC_URL + `/img/service.png`}/>
+                <div className="img-wrapper" data-aos="fade-up">
+                    <img src={process.env.PUBLIC_URL + `/img/service-${device}.png`}/>
                 </div>
             </section>
 
-            <section className="coaching">
+            <section className="coaching mb-100">
                 <div className="background"></div>
-                <div className="layout-1">
-                    <div className="p-title">人生のミッション探索コーチング</div>
+                <div className="layout-1 w-100pc px-5pc">
+                    <div className="p-title text-align-ct">人生のミッション{window.innerWidth < 768 ? <br/> : ""}探索コーチング</div>
                     <div className="flex-column-ct">
                         <div className="sub-title">クライアントの主なテーマ</div>
                         <div className="tag-wrapper">
@@ -119,8 +139,8 @@ export default function TopPage(){
                     </div>
                     <div className="flex-column-ct">
                         <div className="sub-title">クライアントの成果</div>
-                        <div className="flex-row-ct gap-xxl">
-                            <div className="flex-column-start gap-m">
+                        <div className="pc-flex-row-ct mb-flex-col-ct gap-xxl">
+                            <div className="flex-column-start gap-m mb-m">
                                 <div className="flex-row-ct gap-base">
                                     <img src={process.env.PUBLIC_URL + `/img/icon/i-career.png`}/>
                                     <div>天職と思える仕事に出会えた</div>
@@ -138,7 +158,7 @@ export default function TopPage(){
                                     <div>独立した年に会社員時代の年収を超えた</div>
                                 </div>
                             </div>
-                            <div className="flex-column-start gap-m">
+                            <div className="flex-column-start gap-m mb-m">
                                 <div className="flex-row-ct gap-base">
                                     <img src={process.env.PUBLIC_URL + `/img/icon/i-manager.png`}/>
                                     <div>企画がとおり新しい部署のマネージャーになった</div>
@@ -161,20 +181,21 @@ export default function TopPage(){
                 </div>
             </section>
             <section className="trial layout-1">
-                <div className="content-wrapper flex-column-ct gap-xl">
-                    <div className="p-title">60分コーチングセッション</div>
-                    <p className="text-align-ct">
-                        やりたいことの種を見つける！ 自分が今どんなことを考えているのか知りたい、<br/>
-                        <span className="bold color-primary-pink">integral you </span>のコーチングを受けてみたい、という方のためのコーチングです。<br/>
+                <div className="content-wrapper flex-column-ct gap-l w-100pc px-5pc">
+                    <div className="p-title text-align-ct">60分コーチング{window.innerWidth < 768 ? <br/> : ""}セッション</div>
+                    <p className="p-center p-left">
+                        やりたいことの種を見つける！ 自分が今どんなことを考えているのか知りたい、{window.innerWidth > 768 ? <br/> : ""}
+                        <span className="bold color-primary-pink">integral you </span>
+                        のコーチングを受けてみたい、という方のためのコーチングです。{window.innerWidth > 768 ? <br/> : ""}
                         60分のミニセッションですが、充実した内容となっています。（おひとり様1回限り）
                     </p>
                     <a href='/contact'>
                         <button className="primary">今すぐ体験したい</button>
                     </a>
                 </div>
-                <div className="img-wrapper flex-row-ct">
-                    <img src={process.env.PUBLIC_URL + `/img/trial.png`}/>
-                    <div>
+                <div className="img-wrapper pc-flex-row-ct mb-flex-col-ct mb-w-100pc">
+                    <img src={process.env.PUBLIC_URL + `/img/trial.png`} className="mb-w-100pc" style={{zIndex:"100"}}/>
+                    <div data-aos="fade-right">
                         <div className="sub-title">60分コーチングセッションで得られるもの</div>
                         <div className="bullet-list">
                             <div className="bullet-point">自分の現在地が把握できる</div>
@@ -185,22 +206,22 @@ export default function TopPage(){
                 </div>
             </section>
             <section className="program layout-1">
-                <div className="content-wrapper">
+                <div className="content-wrapper flex-column-ct gap-l w-100pc px-5pc">
                     <div className="p-title">プログラム</div>
-                    <div className="flex-row-ct justify-space-btw">
-                        <p>
-                            コースは「6ヵ月コース」と「4ヵ月コース」の２つ。<br/>
-                            コースをご選択される前に、「体験セッション」を受けていただくことをおすすめしています。
-                        </p>
-                        <a href='/program'>
-                            <button className="primary">詳しくはこちら</button>
-                        </a>
-                    </div>
+                    <p className="p-center p-left">
+                        コースは「6ヵ月コース」と「4ヵ月コース」の２つ。<br/>
+                        コースをご選択される前に、「体験セッション」を受けていただくことをおすすめしています。
+                    </p>
+                    <a href='/program'>
+                        <button className="primary">詳しくはこちら</button>
+                    </a>
                 </div>
-                <div className="img-wrapper flex-row-ct justify-space-btw">
-                    <div>
-                        <img src={process.env.PUBLIC_URL + `/img/program-6.png`}/>
-                        <div className="flex-row-ct gap-base">
+                <div className="img-wrapper pc-flex-row-ct mb-flex-col-ct gap-xl">
+                    <div className="course-wrapper mb-xl" data-aos="flip-right">
+                        <div className="img-wrapper mx-auto">
+                            <img src={process.env.PUBLIC_URL + `/img/program-6.png`} className="w-100pc"/>
+                        </div>
+                        <div className="info-wrapper flex-row-ct gap-base">
                             <div className="bigNum color-primary-pink">6</div>
                             <div>
                                 <div className="color-primary-pink">ヵ月コース</div>
@@ -210,9 +231,11 @@ export default function TopPage(){
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <img src={process.env.PUBLIC_URL + `/img/program-4.png`}/>
-                        <div className="flex-row-ct gap-base">
+                    <div className="course-wrapper mb-xl" data-aos="flip-right">
+                        <div className="img-wrapper mx-auto">
+                            <img src={process.env.PUBLIC_URL + `/img/program-4.png`}  className="w-100pc"/>
+                        </div>
+                        <div className="info-wrapper flex-row-ct gap-base">
                             <div className="bigNum color-coral">4</div>
                             <div>
                                 <div className="color-coral">ヵ月コース</div>
@@ -242,7 +265,7 @@ export default function TopPage(){
                     <img className="mark1" src={process.env.PUBLIC_URL + `/img/mark1.png`}/>
                     <img className="mark2" src={process.env.PUBLIC_URL + `/img/mark2.png`}/>
                 </div>
-                <div className="flex-row-ct gap-base">
+                <div className={device === 'pc' ? `flex-row-ct gap-base` : `flex-row-ct gap-s`}>
                     <a href='/faq'>
                         <button className="primary">FAQ を見る</button>
                     </a>
@@ -252,23 +275,10 @@ export default function TopPage(){
                 </div>
             </section>
             <section className="newsletter layout-2">
-                <div className="img-wrapper">
+                <div className="img-wrapper" >
                     <img src={process.env.PUBLIC_URL + `/img/IMG_3742.png`}/>
                 </div>
-                <form className="newsletter-form" onSubmit={handleSubmit}>
-                    <header className="newsletter-header">
-                        <div className="p-title">newsletter</div>
-                        <div>Eメールアドレスを登録すると、毎週ニュースや最新情報が届きます。</div>
-                    </header>    
-                    <div className="newsletter-body">
-                        <div className="flex-row-ct gap-s">
-                            <input type="text" id="lname" name="lastname" placeholder="氏" onChange={handleChange}/>
-                            <input type="text" id="fname" name="firstname" placeholder="名" onChange={handleChange}/>
-                        </div>
-                        <input type="email" id="email" name="email" placeholder="メールアドレス" className="full" onChange={handleChange}/>
-                        <button type="submit" name="add" className="primary">登録</button>
-                    </div>
-                </form>
+                <SubscribeForm/>
             </section>
         </div>
     )

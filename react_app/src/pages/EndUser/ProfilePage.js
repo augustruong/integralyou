@@ -24,7 +24,7 @@ export default function ProfilePage(){
 
     return(
         <div className="profile">
-            <section className="intro">
+            <section className="intro layout-2">
                 <div className="img">
                     <img className="topImg" src={process.env.PUBLIC_URL + `/img/profile-top.jpg`}/>
                         <img className="polaroid i1" src={process.env.PUBLIC_URL + `/img/profile/profile_intro_01.png`} data-aos="fade-down"
@@ -35,7 +35,7 @@ export default function ProfilePage(){
                         />
                     
                 </div>
-                <div className="content" style={{paddingLeft:"150px", transform: `translateY(${offsetY * 0.02}px)`}}>
+                <div className="content w-50pc">
                     <div className="p-title">プローフィル</div>
                     <p>
                         <span className="semi-bold">【略歴】</span><br/>

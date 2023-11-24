@@ -5,6 +5,8 @@
   --color-light-gray: #BDBDBD;
   --color-white: #fff;
 
+  --color-red: #DC2020;
+
   --color-green: #6FCF97;
   --color-purple: #BB6BD9;
 
@@ -31,19 +33,6 @@ body, html {
   /* scroll-snap-points-y: repeat(100vh);
   scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
-
-.gap-none {gap: var(--space-none);}
-.gap-xs {gap: var(--space-xs);}
-.gap-s {gap: var(--space-s);}
-.gap-base {gap: var(--space-base);}
-.gap-m {gap: var(--space-m);}
-.gap-l {gap: var(--space-l);}
-.gap-xl {gap: var(--space-xl);}
-.gap-xxl {gap: var(--space-xxl);}
-
-.color-primary-pink {color: var(--color-primary-pink);}
-.color-coral {color: var(--color-coral);}
-.color-green {color: var(--color-green);}
-.color-purple {color: var(--color-purple);}

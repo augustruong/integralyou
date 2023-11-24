@@ -23,7 +23,7 @@
 .thumbnail {
     width: 280px;
     height: 280px;
-    background-image: url('/public/img/istockphoto.jpg');
+    background-image: url('/img/istockphoto.jpg');
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -37,12 +37,8 @@
     padding-bottom: 100px;
 }
 
-.admin.blogList .news{
-    padding-top: 50px;
-}
-
 .dbTable .title {
-    width: 400px;
+    width: 450px;
 }
 
 .dbTable .content {
@@ -50,10 +46,12 @@
 }
 
 .dbTable .date {
-    width: 110px;
+    width: 200px;
+    text-align: center;
 }
 .dbTable .actions {
-    width: 110px;
+    width: 200px;
+    text-align: center;
 }
 .dbTable td {
     vertical-align: top;
@@ -72,6 +70,47 @@ table thead {
     background-color: #ffedea6b;
 }
 
+.admin.blogList .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    /* visibility: hidden;
+    opacity: 0; */
+}
+.popup {
+    /* margin: 70px auto; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 25%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 24px;
+    font-weight: 900;
+    text-decoration: none;
+    color: #333;
+}
+.popup .close:hover {
+    color: var(--color-primary-pink);
+    cursor: pointer;
+}
+.popup .content {
+    max-height: 30%;
+    overflow: auto;
+}
 
 /* ------------------------------------------------------ admin/home */
 .admin.home {

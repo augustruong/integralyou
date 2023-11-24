@@ -9,7 +9,9 @@ const words = {
             blog: "/blog",
             faq: "/faq",
             news: "/news",
-            contact: "/contact"
+            contact: "/contact",
+            blogdetail: "/blog/:id",
+            interviewdetail: "/interview/:id"
         },
         admin: {
             login: "/admin/login",
@@ -17,7 +19,7 @@ const words = {
             blogmanage: "/admin/blogManage",
             lettersmanage: "/admin/lettersManage",
             subscribersmanage: "/admin/subscribersManage",
-            createpost: "/admin/createpost",
+            createpost: "/admin/createpost/:category",
             editpost: "/admin/blogmanage/post/:id/edit",
         }
     },
@@ -53,16 +55,17 @@ const words = {
             errorOccurred: "An error occurred: ",
             back: "＜ Back to List",
             create: {
-                title: "Create New Post",
+                title: "Create New",
             },
             edit: {
-                title: "Edit Post",
+                title: "Edit",
             },
             category: "Category",
             title: "Title",
             info: "Info",
             uploadCover: "Upload cover picture",
             description: "Description",
+            content: "Content",
             save: "Save"
         },
     }

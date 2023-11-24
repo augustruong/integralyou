@@ -13,7 +13,7 @@ export default function MessagePage(){
 
     useEffect(() => {
         function handleResize() {
-            if (window.innerWidth <= 1200) { setDevice("mob") } else { setDevice("pc") }
+            if (window.innerWidth <= 768) { setDevice("mb") } else { setDevice("pc") }
         }
         window.addEventListener('resize', handleResize);
 
@@ -26,7 +26,8 @@ export default function MessagePage(){
         <div className="message">
             <section className="intro layout-2">
                 <div className="img-wrapper" data-aos="fade-down" style={{transform: `translateY(${offsetY * 0.08}px)`}}>
-                    <img src={process.env.PUBLIC_URL + `/img/message-img.png`} data-aos="fade-right"/>
+                    <img src={process.env.PUBLIC_URL + window.innerWidth < 768 ? `/img/message-you-mb.png` : `/img/message-you-pc.png`} 
+                         className="w-100pc" data-aos="fade-right"/>
                 </div>
                 <div className="content-wrapper flex-column-start gap-l">
                     <div className="p-title">メッセージ</div>
@@ -74,7 +75,7 @@ export default function MessagePage(){
                     </div>
                 </div>
                 <div className="messageBox" data-aos="fade-down" style={{transform: `translateY(${offsetY * 0.04}px)`}}>
-                    <img className="spark" src={process.env.PUBLIC_URL + `/img/spark.svg`}/>
+                    <img className="spark p42" src={process.env.PUBLIC_URL + `/img/spark.svg`}/>
                     <div className="frame">
                         <p>
                         仕事もプライベートもおもしろくない！<br/>

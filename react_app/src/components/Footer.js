@@ -36,7 +36,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className='policy flex-row-ct gap-xl'>
+                <div className='policy flex-row-ct'>
                     <NavLink to='/'>利用規約</NavLink>
                     <NavLink to='/'>個人情報保護方針</NavLink>
                     <NavLink to='/'>サービスポリシー</NavLink>

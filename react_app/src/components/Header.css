@@ -38,6 +38,7 @@
 }
 #header > .header__menu ul {
     display: flex;
+    align-items: center;
     gap: 45px;
     z-index: 999;
 }
@@ -57,7 +58,7 @@ a.nav__link.active {
 
 .fas.fa-times {color: var(--color-gray);}
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1080px) {
     #header {
         height: 85px;
         flex-direction: row;
@@ -69,8 +70,6 @@ a.nav__link.active {
         position: fixed;
         height: 45px;
         width: 45px;
-        padding-top: 5px;
-        top: 25px;
         right: 3%;
         font-size: 1.7rem;
         cursor: pointer;
@@ -123,7 +122,13 @@ a.nav__link.active {
 }
 
 @media screen and (max-width: 640px) {
+    #header {
+        padding: 15px 20px;
+    }
     #header > .header__menu{
         width: 100%;
+    }
+    #header .logo > img {
+        width: 42px;
     }
 }

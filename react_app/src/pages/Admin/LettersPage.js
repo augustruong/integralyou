@@ -8,7 +8,6 @@ import './Admin.css'
 
 export default function LettersPage(){
     const [letters, setLetters] = useState([]);
-    const navigate = useNavigate();
 
     useEffect(() => {
         getLetters();
@@ -19,6 +18,7 @@ export default function LettersPage(){
             setLetters(response.data);
         });
     }
+    
     return(
         <div className="admin letters">
             <div className="header">
@@ -32,20 +32,20 @@ export default function LettersPage(){
                     <thead>
                         <tr>
                             <th className="name">Name</th>
-                            <th className="email">Email</th>
-                            <th className="phone">Phone</th>
-                            <th className="content">Subject/Message</th>
+                            <th className="email">Email/Phone</th>
+                            <th className="content">Title/Message</th>
                             <th className="date">Date Added</th>
+                            <th className="action">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {letters.map((letter,key) => 
                         <tr key={key}>
                             <td>{letter.firstname} {letter.lastname}</td>
-                            <td>{letter.email}</td>
-                            <td>{letter.phone}</td>
-                            <td>{letter.subject}<br/>{parse(letter.message)}</td>
+                            <td>{letter.email}<br/>{letter.phone}</td>
+                            <td>{letter.title}<br/>{parse(letter.message)}</td>
                             <td>{letter.date}</td>
+                            <td><a href = {`mailto: ${letter.email}`}>Send Email</a></td>
                         </tr>
                         )}
                     </tbody>

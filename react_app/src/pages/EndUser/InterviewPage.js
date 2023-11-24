@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import words from "../../words";
 
 import BlogItem from "../../components/BlogItem";
-import './InterviewPage.css'
-
 
 export default function InterviewPage(){
     const navigate = useNavigate();
@@ -21,16 +19,16 @@ export default function InterviewPage(){
         });
     }
     return(
-        <div className="interview layout-1">
-            <div className="header">
-                <div className="p-title">クライエントレビュー</div>
+        <div className="interview layout-1 pt-150">
+            <div className="header text-align-ct">
+                <div className="p-title mg-base">クライエントレビュー</div>
                 <div className="spark p24"></div>
             </div>
-            <div className="interview-list grid">
+            <div className="grid gap-xl md:grid-cols-2 xl:grid-cols-3">
                 {posts.sort((a, b) => a.date < b.date ? 1 : -1).map((post) =>
                     <>
                         {post.categoryId === 2 && 
-                        <BlogItem title={post.title} cover={post.cover} description={post.description} date={post.date}/>
+                        <BlogItem postId={post.id} category={'interview'} title={post.title} cover={post.cover} description={post.description} date={post.date}/>
                         }
                     </>
                 )}

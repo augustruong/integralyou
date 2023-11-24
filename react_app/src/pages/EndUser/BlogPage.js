@@ -5,8 +5,6 @@ import parse from 'html-react-parser'
 import words from "../../words";
 
 import BlogItem from "../../components/BlogItem";
-import './BlogPage.css'
-
 
 export default function BlogPage(){
     const [posts, setPosts] = useState([]);
@@ -22,16 +20,16 @@ export default function BlogPage(){
     }
 
     return(
-        <div className="blog layout-1">
-            <div className="header">
-                <div className="p-title">ブログ</div>
+        <div className="blog layout-1 pt-150">
+            <div className="header text-align-ct">
+                <div className="p-title mg-base">ブログ</div>
                 <div className="spark p24"></div>
             </div>
-            <div className="blog-list grid">
+            <div className="grid gap-xl md:grid-cols-2 xl:grid-cols-3">
             {posts.sort((a, b) => a.date < b.date ? 1 : -1).map((post) =>
                 <>
                     {post.categoryId === 1 && 
-                        <BlogItem title={post.title} cover={post.cover} description={post.description} date={post.date}/>
+                        <BlogItem postId={post.id} category={'blog'} title={post.title} cover={post.cover} description={post.description} date={post.date}/>
                     }
                 </>
             )}

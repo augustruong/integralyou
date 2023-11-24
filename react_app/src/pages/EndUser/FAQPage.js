@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-import './FAQPage.css'
 import AccordionItem from "../../components/AccordionItem";
 
 export default function FAQPage(){
     return(
-        <div className="faq layout-1">
-            <div className="header">
-                <div className="p-title">よくある質問</div>
+        <div className="faq layout-1 pt-150">
+            <div className="header text-align-ct">
+                <div className="p-title mg-base">よくある質問</div>
                 <div className="spark p24"></div>
             </div>
-            <div className="accordion">
+            <div className="accordion max-w-900">
                 <AccordionItem 
                     question="テキストや教材を購入する必要はありますか。"
                     answer="決まったテキストや教材はありません。クライアントに必要なワークを、その都度PDFまたは印刷したものでお渡ししています。"

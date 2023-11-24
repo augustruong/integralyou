@@ -1,5 +1,5 @@
 /* .message{ padding-top: 90px; } */
-.message section { height: 100vh; max-height: 900px;}
+.message section { min-height: 100vh; width: 100%;}
 
 .message section.intro > div {
     width: 50%;
@@ -25,8 +25,7 @@
 }
 .messageBox .spark {
     position: absolute;
-    top: -27px;
-    left: 50%;
+    top: -20px;
     animation: spinWithX 5s infinite linear;
 }
 
@@ -69,6 +68,45 @@
     animation-play-state: paused;
   }*/
   @keyframes scrollText {
-    from   { transform: translateX(0%); }
+    from { transform: translateX(0%); }
     to { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 1080px) {
+    .message section {
+        height: auto;
+        max-height: none;
+    }
+    .message section.intro {
+        padding-top: 90px;
+    }
+    .message section.second {
+        padding-top: 90px;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .message section.intro > div {
+        width: 100%;
+    }
+    .message section.intro .content-wrapper {
+        padding-left: 5%;
+        padding-right: 5%;
+        align-items: center;
+    }
+    .m-scroll {
+        margin-top: var(--space-xl);
+    }
+    .slidingText {
+        font-size: 30px;
+    }
+    
+  }
+
+  @media (max-width: 480px) {
+    .message .frame{
+        padding: var(--space-xl) var(--space-base);
+    }
+    .message section.second a {
+        margin-top: var(--space-xl);
+    }
   }

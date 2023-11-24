@@ -69,12 +69,20 @@ export default class Header extends React.Component {
                         <li className='nav__item'>
                             <NavLink to='/faq'  className='nav__link' activeClassName="active" onClick={this.closeMobileMenu}>FAQ</NavLink>
                         </li>
+                        {window.innerWidth < 1080 &&
+                        <li className='nav__item'>
+                            <Link to='/contact'>
+                                <button>お問い合わせ</button>
+                            </Link>
+                        </li>
+                        }
                     </ul>
                 </nav>
-
+                {window.innerWidth >= 1080 &&
                 <Link to='/contact'>
                     <button>お問い合わせ</button>
                 </Link>
+                }
             </header>    
         )
     }

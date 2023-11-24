@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, request, jsonify
+    Blueprint, request, jsonify, abort
 )
 from model import Subscribers, subscriber_schema, subscribers_schema, db
 
@@ -13,6 +13,7 @@ def listsubscribers():
 
 @subscriber.route('/subscriberadd',methods=['POST'])
 def subscriberadd():
+    # abort(400, 'Record not found')
     firstname = request.json['firstname']
     lastname = request.json['lastname']
     email = request.json['email']
@@ -22,3 +23,6 @@ def subscriberadd():
     db.session.commit()
 
     return subscriber_schema.jsonify(subscribers)
+
+
+   

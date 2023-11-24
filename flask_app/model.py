@@ -90,25 +90,25 @@ categories_schema = CategorySchema(many=True)
 class Letters(db.Model):
     __tablename__ = "letters"
     id = db.Column(db.Integer,primary_key=True)
-    firstname = db.Column(db.String(50))
     lastname = db.Column(db.String(50))
+    firstname = db.Column(db.String(50))
     email = db.Column(db.String(50))
     phone = db.Column(db.String(15))
-    subject = db.Column(db.String)
+    title = db.Column(db.String)
     message = db.Column(db.String)
     date = db.Column(db.Date,default=func.now())
  
-    def __init__(self,firstname,lastname,email,phone,subject,message):
+    def __init__(self,lastname,firstname,email,phone,title,message):
         self.firstname=firstname
         self.lastname=lastname
         self.email=email
         self.phone=phone
-        self.subject=subject
+        self.title=title
         self.message=message
 
 class LetterSchema(ma.Schema):
     class Meta:
-        fields = ('id','firstname','lastname','email','phone','subject','message','date')
+        fields = ('id','lastname','firstname','email','phone','title','message','date')
 
 letter_schema = LetterSchema()
 letters_schema = LetterSchema(many=True)

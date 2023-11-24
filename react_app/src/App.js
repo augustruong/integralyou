@@ -23,6 +23,7 @@ import Layout from './components/Layout';
 import words from './words';
 import FAQPage from './pages/EndUser/FAQPage';
 import ContactPage from './pages/EndUser/ContactPage';
+import PostDetail from './pages/EndUser/PostDetail';
  
 function App() {
     const token = localStorage.getItem('token')
@@ -38,7 +39,8 @@ function App() {
             <Route path={words.routes.user.faq} element={Layout(FAQPage)} />
             <Route path={words.routes.user.news} element={Layout(NewsPage)} />
             <Route path={words.routes.user.contact} element={Layout(ContactPage)} />
-
+            <Route path={words.routes.user.blogdetail} element={Layout(PostDetail)} />
+            <Route path={words.routes.user.interviewdetail} element={Layout(PostDetail)} />
   
             <Route path={words.routes.admin.login} element={<AdminLogin />} />
             <Route path={words.routes.admin.home} element={<AdminHome />} />
