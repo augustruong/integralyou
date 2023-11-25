@@ -9,14 +9,13 @@ export default function PostDetail(){
     const {id} = useParams();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         getPost(id);
-        console.log(post)
     }, [id]);
   
     function getPost(id) {
         axios.get(words.api.admin.post.detail(id)).then(function(response) {
             setPost(response.data);
-            console.log(response.data)
         });
     }
 

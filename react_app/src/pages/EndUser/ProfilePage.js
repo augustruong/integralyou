@@ -12,6 +12,8 @@ export default function ProfilePage(){
     const handleScroll = () => setOffsetY(window.pageYOffset);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+
         function handleResize() {
             if (window.innerWidth <= 1200) { setDevice("mob") } else { setDevice("pc") }
         }

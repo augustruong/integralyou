@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import parse from 'html-react-parser'
 import words from "../../words";
 
 import BlogItem from "../../components/BlogItem";
@@ -10,9 +8,10 @@ export default function BlogPage(){
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         getPosts();
     }, []);
-  
+
     function getPosts() {
         axios.get(words.api.admin.post.list).then(function(response) {
             setPosts(response.data);

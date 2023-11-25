@@ -10,6 +10,7 @@ export default function InterviewPage(){
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         getPosts();
     }, []);
   

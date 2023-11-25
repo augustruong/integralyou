@@ -12,6 +12,8 @@ export default function MessagePage(){
     const handleScroll = () => setOffsetY(window.pageYOffset);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+
         function handleResize() {
             if (window.innerWidth <= 768) { setDevice("mb") } else { setDevice("pc") }
         }

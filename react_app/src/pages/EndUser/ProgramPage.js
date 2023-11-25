@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import './ProgramPage.css'
@@ -11,6 +9,8 @@ export default function ProgramPage(){
     const handleScroll = () => setOffsetY(window.pageYOffset);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+
         function handleResize() {
             if (window.innerWidth <= 1080) { setDevice("mb") } else { setDevice("pc") }
         }
@@ -140,7 +140,9 @@ export default function ProgramPage(){
                         <img src={process.env.PUBLIC_URL + `/img/program/course-60p-${device}.png`} className="mx-auto"/>
                     </div>
                 </div>
-                <button className="primary">今すぐ登録したい</button>
+                <a href='/contact'>
+                    <button className="primary">今すぐ登録したい</button>
+                </a>
             </section>
             <section className="process layout-1">
                 <div className="header">

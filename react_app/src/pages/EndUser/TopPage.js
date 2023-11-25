@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link,useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import words from "../../words";
@@ -35,6 +35,8 @@ export default function TopPage(){
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+        
         getPosts();
         window.addEventListener('resize', handleResize);
 
@@ -251,7 +253,11 @@ export default function TopPage(){
                 <div className="p-title">ブログ</div>
                 <div className="blog-list">
                     {posts.filter(item => item.categoryId === 1).sort((a, b) => a.date < b.date ? 1 : -1).slice(0,3).map((post) =>
-                        <BlogItem title={post.title} cover={post.cover} description={post.description} date={post.date}/>
+                        <>
+                        {post.categoryId === 1 && 
+                            <BlogItem postId={post.id} category={'blog'} title={post.title} cover={post.cover} description={post.description} date={post.date}/>
+                        }
+                        </>
                     )}
                 </div>
                 <a href='/blog'>

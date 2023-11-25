@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import AccordionItem from "../../components/AccordionItem";
 
 export default function FAQPage(){
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return(
         <div className="faq layout-1 pt-150">
             <div className="header text-align-ct">

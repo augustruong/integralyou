@@ -3,7 +3,6 @@ import axios from "axios";
 import parse from 'html-react-parser'
 import words from "../../words";
 
-import BlogItem from "../../components/BlogItem";
 import './NewsPage.css'
 
 
@@ -11,6 +10,7 @@ export default function NewsPage(){
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         getPosts();
     }, []);
   
