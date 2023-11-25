@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import './ProgramPage.css'
@@ -11,8 +9,10 @@ export default function ProgramPage(){
     const handleScroll = () => setOffsetY(window.pageYOffset);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+
         function handleResize() {
-            if (window.innerWidth <= 1200) { setDevice("mob") } else { setDevice("pc") }
+            if (window.innerWidth <= 1080) { setDevice("mb") } else { setDevice("pc") }
         }
         window.addEventListener('resize', handleResize);
 
@@ -44,7 +44,7 @@ export default function ProgramPage(){
             <section className="features flex-column-ct" data-aos="fade-down" style={{transform: `translateY(${offsetY * 0.06}px)`}}>
                 <div className="m-title">integral youのサポートプログラムが目指すもの</div>
                 <img  className="spark" src={process.env.PUBLIC_URL + `/img/spark.svg`}/>
-                <div className="flex-row-ct">
+                <div className="items">
                     <div className="feature-item" data-aos="flip-right" >
                         <img src={process.env.PUBLIC_URL + `/img/program/featureIcon-1.svg`} />
                         <img src={process.env.PUBLIC_URL + `/img/program/featureBase-1.svg`}/>
@@ -61,7 +61,7 @@ export default function ProgramPage(){
             </section>
             <section className="steps flex-column-ct">
                 <div className="header flex-row-ct justify-space-btw">
-                    <div>
+                    <div className="arrow">
                         <img src={process.env.PUBLIC_URL + `/img/program/arrowRight.svg`}/>
                     </div>
                     <div className="flex-column-ct">
@@ -72,7 +72,7 @@ export default function ProgramPage(){
                         </p>
                         <div className="spark p24"></div>
                     </div>
-                    <div>
+                    <div className="arrow">
                         <img src={process.env.PUBLIC_URL + `/img/program/arrowLeft.svg`}/>
                     </div>
                 </div>
@@ -127,12 +127,22 @@ export default function ProgramPage(){
                     <div className="spark p24"></div>
                 </div>
                 <div className="gallery">
-                    <img src={process.env.PUBLIC_URL + `/img/program/course-6m.png`} data-aos="flip-right"/>
-                    <img src={process.env.PUBLIC_URL + `/img/program/course-4m.png`}  data-aos="flip-right"/>
-                    <img src={process.env.PUBLIC_URL + `/img/program/course-120p.png`} data-aos="flip-right"/>
-                    <img src={process.env.PUBLIC_URL + `/img/program/course-60p.png`} data-aos="flip-right"/>
+                    <div className="img-wrapper mx-auto" data-aos="flip-right">
+                        <img src={process.env.PUBLIC_URL + `/img/program/course-6m-${device}.png`} className="mx-auto" />
+                    </div>
+                    <div className="img-wrapper mx-auto" data-aos="flip-right">
+                        <img src={process.env.PUBLIC_URL + `/img/program/course-4m-${device}.png`} className="mx-auto"/>
+                    </div>
+                    <div className="img-wrapper mx-auto" data-aos="flip-right">
+                        <img src={process.env.PUBLIC_URL + `/img/program/course-120p-${device}.png`} className="mx-auto"/>
+                    </div>
+                    <div className="img-wrapper mx-auto" data-aos="flip-right">
+                        <img src={process.env.PUBLIC_URL + `/img/program/course-60p-${device}.png`} className="mx-auto"/>
+                    </div>
                 </div>
-                <button className="primary">今すぐ登録したい</button>
+                <a href='/contact'>
+                    <button className="primary">今すぐ登録したい</button>
+                </a>
             </section>
             <section className="process layout-1">
                 <div className="header">
@@ -140,27 +150,27 @@ export default function ProgramPage(){
                     <div className="spark p24"></div>
                 </div>
                 <div className="gallery layout-1">
-                    <div className="flex-row-ct" data-aos="zoom-in" data-aos-delay="0">
+                    <div className="item-wrapper" data-aos="zoom-in" data-aos-delay="0">
                         <img src={process.env.PUBLIC_URL + `/img/program/i-process-1.svg`}/>
                         <div className="frame">セッションは1回120分までです。対話をとおして、あなたの「思考」や「感情」を言語化し、明確にしていきます。あなたの人生のボトルネックを見つけましょう。</div>
                         <img src={process.env.PUBLIC_URL + `/img/program/i-process-1.svg`}/>
                     </div>
-                    <div className="flex-row-ct" data-aos="zoom-in" data-aos-delay="100">
+                    <div className="item-wrapper" data-aos="zoom-in" data-aos-delay="100">
                         <img src={process.env.PUBLIC_URL + `/img/program/i-process-2.svg`}/>
                         <div className="frame">4つのステップを順にクリアしていきます。それにより、あなたの「挑戦し成長を楽しむマインド」を無理なく育てます。※6ヵ月コースの場合</div>
                         <img src={process.env.PUBLIC_URL + `/img/program/i-process-2.svg`}/>
                     </div>
-                    <div className="flex-row-ct" data-aos="zoom-in" data-aos-delay="200">
+                    <div className="item-wrapper" data-aos="zoom-in" data-aos-delay="200">
                         <img src={process.env.PUBLIC_URL + `/img/program/i-process-3.svg`}/>
                         <div className="frame">セッションでは、おもに対話によりあなたの内省を引き出します。教えたりアドバイスをしたりすることがメインではありません。</div>
                         <img src={process.env.PUBLIC_URL + `/img/program/i-process-3.svg`}/>
                     </div>
-                    <div className="flex-row-ct" data-aos="zoom-in" data-aos-delay="300">
+                    <div className="item-wrapper" data-aos="zoom-in" data-aos-delay="300">
                         <img src={process.env.PUBLIC_URL + `/img/program/i-process-4.svg`}/>
                         <div className="frame">決まったテキストのようなものはありません。あなたにあったワークをその都度課題としてお渡しします。ワークの結果を次のセッションで分析していきましょう。</div>
                         <img src={process.env.PUBLIC_URL + `/img/program/i-process-4.svg`}/>
                     </div>
-                    <div className="flex-row-ct" data-aos="zoom-in" data-aos-delay="400">
+                    <div className="item-wrapper" data-aos="zoom-in" data-aos-delay="400">
                         <img src={process.env.PUBLIC_URL + `/img/program/i-process-5.svg`}/>
                         <div className="frame">セッションとセッションの間に、質問がありましたらLINEでメッセージをください。お約束の時間内にご返信します。弱音を吐きたくなった、グチや文句を言いたくなった、などでも大丈夫です。いつでもあなたとつながっています。</div>
                         <img src={process.env.PUBLIC_URL + `/img/program/i-process-5.svg`}/>
@@ -173,8 +183,8 @@ export default function ProgramPage(){
                     <div className="spark p24"></div>
                 </div>
                 <div className="layout-1">
-                    <img src={process.env.PUBLIC_URL + `/img/program/table-6m.png`} data-aos="fade-right"/>
-                    <img src={process.env.PUBLIC_URL + `/img/program/table-4m.png`} data-aos="fade-left"/>
+                    <img src={process.env.PUBLIC_URL + `/img/program/table-6m-${device}.png`} data-aos="fade-right"/>
+                    <img src={process.env.PUBLIC_URL + `/img/program/table-4m-${device}.png`} data-aos="fade-left"/>
                 </div>
             </section>
         </div>

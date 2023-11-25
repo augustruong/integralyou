@@ -32,7 +32,6 @@ footer .body .policy a:hover {
 }
 .tags-wrapper {
     width: 40%;
-    max-width: 500px;
 }
 .tags-wrapper .label, .sns-wrapper .label {
     background-color: var(--color-white);
@@ -84,4 +83,29 @@ footer .copyright {
     text-align: center;
     padding: var(--space-base);
     font-size: 12px;
+}
+
+footer .policy {
+    gap: var(--space-xl)
+}
+
+@media (max-width: 960px) {
+    footer .body {
+        height: auto;
+    }
+    footer .body .inner {
+        width: 84%;
+        flex-direction: column;
+        padding-bottom: var(--space-xl);
+    }
+    .tags-wrapper, .sns-wrapper {
+        width: 100%;
+    }
+    .sns-list {
+        justify-content: space-around;
+    }
+    footer .policy {
+        gap: var(--space-base)
+    }
+    
 }

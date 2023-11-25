@@ -13,14 +13,14 @@ def listletters():
 
 @letter.route('/letteradd',methods=['POST'])
 def letteradd():
-    firstname = request.json['firstname']
     lastname = request.json['lastname']
+    firstname = request.json['firstname']
     email = request.json['email']
     phone = request.json['phone']
-    subject = request.json['subject']
+    title = request.json['title']
     message = request.json['message']
 
-    letters = Letters(firstname,lastname,email,phone,subject,message)
+    letters = Letters(lastname,firstname,email,phone,title,message)
     db.session.add(letters)
     db.session.commit()
 

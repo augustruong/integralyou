@@ -10,23 +10,29 @@ export default function EditPost(){
     const [inputs, setInputs] = useState([]);
     const [error, setError] = useState(null);
     const {id} = useParams();
-  
+    const [validation, setValidation] = useState(false);
+
+    
     useEffect(() => {
-        getPost(id);
+        getPost(id)
+        setValidation(true)
     }, [id]);
   
     function getPost(id) {
         axios.get(words.api.admin.post.detail(id)).then(function(response) {
             setInputs(response.data);
+
         });
     }
-  
+    
     const hiddenFileInput = useRef(null);
 
     const handleTextChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}));
+        console.log(inputs)
+        checkValidation({...inputs, [name]: value})
     }
     const handleCoverChange = event => {
         const fileUploaded = event.target.files[0];
@@ -52,12 +58,24 @@ export default function EditPost(){
             navigate('/admin/blogmanage');
         }).catch((error) => setError(error));   
     }
-     
+    const checkValidation = (inputs) => {
+        if (inputs.categoryId === 3){
+            if (inputs.title !== undefined && inputs.content !== undefined) setValidation(true)
+            else setValidation(false)
+        }
+        else {
+            if (inputs.title !== "" && inputs.description !== "" && inputs.content !== "" && inputs.cover !== null) setValidation(true)
+            else setValidation(false)
+        }
+        console.log(inputs.categoryId, inputs)
+    }
     return (
         <PostForm
             inputs={inputs}
             setInputs={setInputs}
             error={error}
+            validation={validation}
+            categoryId={inputs.categoryId}
             hiddenFileInput={hiddenFileInput}
             handleTextChange={handleTextChange}
             handleCoverChange={handleCoverChange}

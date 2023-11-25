@@ -35,6 +35,7 @@ export default function SubscribersPage(){
                             <th className="name">Name</th>
                             <th className="email">Email</th>
                             <th className="date">Date Added</th>
+                            <th className="action">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,7 @@ export default function SubscribersPage(){
                             <td>{subscriber.firstname} {subscriber.lastname}</td>
                             <td>{subscriber.email}</td>
                             <td>{subscriber.date}</td>
+                            <td><a href = {`mailto: ${subscriber.email}`}>Send Email</a></td>
                         </tr>
                         )}
                     </tbody>

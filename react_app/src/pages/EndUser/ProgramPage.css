@@ -1,5 +1,5 @@
 .program{ padding-top: 90px; }
-.program section { height: 100vh; }
+/* .program section { min-height: 100vh; } */
 
 .program section.intro {
     text-align: center;
@@ -23,11 +23,7 @@
     object-fit: cover;
 }
 .program section.intro > .layout-2 > .content-wrapper {
-    /* text-align: left; */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
+    text-align: left;
     height: 100%;
 }
 .program section.intro > .layout-2 > .content-wrapper img {
@@ -45,14 +41,20 @@
 .program section.features {
     border: 1px solid var(--color-primary-pink);
     background-color: var(--color-white);
-    width: 1100px;
+    max-width: 1100px;
     height: 315px;
     padding-top: var(--space-l);
     margin: 0 auto;
     margin-top: -70px;
 }
+.program section.features .items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .program section.features > img {
     width: 24px;
+    height: 24px;
     margin-top: var(--space-base);
     margin-bottom: var(--space-l);
 }
@@ -88,6 +90,7 @@
 .program section.steps .header {
     z-index: 100;
     width: 100%;
+    justify-content: space-between;
 }
 .program section.steps .header > .flex-column-ct > p {
     margin-bottom: var(--space-l);
@@ -117,7 +120,7 @@
     font-family: "MotoyaExAporo W55 W6 mono";
     padding: 15px 120px 20px 105px;
     margin-top: var(--space-m);
-    background-image: url("/public/img/program/stepArrow.svg");
+    background-image: url("/img/program/stepArrow.svg");
     background-size: cover;
     background-position: 0%;
 }
@@ -134,6 +137,9 @@
     flex-wrap: wrap;
     gap: 20px;
     width: 1050px;
+}
+.program section.courses .gallery .img-wrapper {
+    max-width: 508px;
 }
 .program section.courses .header {
     text-align: center;
@@ -152,13 +158,16 @@
     padding-bottom: 10%;
 }
 .program section.process .layout-1 {
-    gap: var(--space-s);
+    gap: var(--space-m);
 }
-.program section.process .gallery .flex-row-ct {
+.program section.process .gallery .item-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
     gap: var(--space-xl);
 }
-.program section.process .gallery .flex-row-ct:last-child {
+.program section.process .gallery .item-wrapper:last-child {
     margin-top: 7px;
 }
 .program section.process .frame {
@@ -169,6 +178,7 @@
     background: #FFF;
     box-shadow: 7px 7px 0px 0px var(--color-primary-pink);
     border-radius: 4px;
+    line-height: 200%;
 }
 
 .program section.schedule {
@@ -179,3 +189,80 @@
 .program .header {
     text-align: center;
 }
+
+@media (max-width: 1080px) {
+    .program section.intro  {
+        height: auto;
+        max-height: none;
+    }
+
+    .program section.intro .layout-2 .img-wrapper,
+    .program section.intro .layout-2 .content-wrapper {
+        width: 100%;
+    }
+    .program section.intro > .layout-2 > .content-wrapper > p {
+        width: 100%;
+    }
+    .program section.intro .layout-2 .content-wrapper, .program section.features {
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: var(--space-xl);
+        height: auto;
+    }
+    .program section.features .m-title {text-align: center;}
+    .program section.features .items {
+        flex-direction: column;
+    }
+    .program section.features .feature-item:not(:last-child) {
+        margin-right: 0;
+    }
+    .program section.features .feature-item {
+        margin-top: 80%;
+    }
+    .program section.steps .header, .program section.courses .header {
+        padding-left: 5%;
+        padding-right: 5%;
+        justify-content: center;
+    }
+    .program section.steps .header .arrow {
+        display: none;
+    } 
+    .program section.steps .content {
+        flex-direction: column;
+        padding: 75px 5%;
+        gap: 75px;
+    }
+    .program section.steps .content .step-item .label { 
+        margin-top: 0;
+    }
+    .program section.courses .gallery {
+        flex-direction: column;
+        width: 100%;
+        padding-left: 3%;
+        padding-right: 3%;
+        gap: var(--space-xl);
+    }
+    
+    .program section.courses .gallery .img-wrapper {
+        width: 100%;
+        max-width: 508px;
+    }
+    .program section.process .gallery {
+        gap: var(--space-xl);
+    }
+    .program section.process .gallery .item-wrapper {
+        flex-direction: column;
+        gap: 0;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .program section.process .gallery .item-wrapper img:last-child {
+        display: none;
+    }
+    .program section.process .gallery .item-wrapper .frame {
+        width: 100%;
+    }
+    .program section.schedule {
+        height: auto;
+    }
+  }

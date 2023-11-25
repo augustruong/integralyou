@@ -1,13 +1,6 @@
 .profile { padding-top: 90px; }
 .profile section { height: 100vh; max-height: 750px;}
 
-.profile > section.intro {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    /* justify-content: space-between; */
-    /* width: 100vw; */
-}
 .profile > section.history {
     display: flex;
     flex-direction: row;
@@ -25,9 +18,8 @@
     z-index: 1;
     position: absolute;
 }
-
 .profile > section.intro > .content {
-    width: 50%;
+    padding-left: 150px;
 }
 .profile > section.intro > .content > p, section.history > .content > p {
     width: 420px;
@@ -87,7 +79,6 @@
     position: relative;
 }
 .dashline {
-    /* height: 100vh; */
     max-height: 750px;
     top: 40%;
     left: 50%;
@@ -116,7 +107,7 @@ section.history.even > .content {
     top: 22%;
 }
 .profile .spark.s2 {
-    left: 98.5%;
+    left: 98.7%;
     top: 14%;
 }
 .profile .spark.s3 {   
@@ -132,4 +123,125 @@ section.history.even > .content {
     font-size: 81px;
     font-weight: 600;
     color: #eeeeee;
+}
+
+@media (max-width: 1080px) {
+    .profile section {
+        max-height: none;
+    }
+    .profile > section > .img {
+        width: 100%;
+    }
+   .profile section.intro .content {
+        width: auto;
+        padding-left: 5%;
+        padding-right: 5%;
+   } 
+   .profile > section.intro > .content > p, section.history > .content > p {
+        width: auto;
+    }
+    .polaroid.i1 {
+        top: 30%;
+        left: 7%;
+    }
+    .polaroid.i3 {
+        top: 20%;
+        left: 25%;
+    }
+    .polaroid.i4 {
+        top: 36%;
+        left: 5%;
+    }
+    .polaroid.i5 {
+        top: 10%;
+        left: 35%;
+    }
+    .polaroid.i6 {
+        top: 30%;
+        left: 5%;
+    }
+    .polaroid.i7 {
+        top: 40%;
+        left: 30%;
+    }
+    .polaroid.i8 {
+        top: 10%;
+        left: 0%;
+    }
+    .polaroid.i9 {
+        top: 30%;
+        left: 30%;
+    }
+    .polaroid.i10 {
+        top: 48%;
+        left: 0;
+    }
+    .profile .spark.s1, .profile .spark.s2,.profile .spark.s3, .dashline {   
+        display: none;
+    }
+    section.history > .content {
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+
+    .profile section.history .img {
+        width: 50%;
+    }
+}
+
+@media (max-width: 900px) {
+    .polaroid.i1,.polaroid.i2 {
+        display: none;
+    }
+    .profile > section.history {
+        flex-direction: column;
+        height: auto;
+    }
+    .profile > section.history.even {
+        flex-direction: column-reverse;    
+    }
+    .profile > section.history.even .content {
+        align-items: flex-start;
+    }
+    .profile > section.history .img {
+        height: 800px;
+    }
+    .profile section.history .content , .profile section.history .img {
+        width: 100%;
+    }
+    .polaroid.i3 {
+        top: 10%;
+        left: 25%;
+    }
+    .polaroid.i4 {
+        top: 22%;
+        left: 5%;
+    }
+    .polaroid.i5 {
+        top: 5%;
+        left: 35%;
+    }
+    .polaroid.i6 {
+        top: 20%;
+        left: 5%;
+    }
+    .polaroid.i7 {
+        top: 35%;
+        left: 30%;
+    }
+    .polaroid.i8 {
+        top: 0%;
+        left: 0%;
+    }
+    .polaroid.i9 {
+        top: 10%;
+        left: 50%;
+    }
+    .polaroid.i10 {
+        top: 20%;
+        left: 0;
+    }
+    .continue {
+        display: none;
+    }
 }
