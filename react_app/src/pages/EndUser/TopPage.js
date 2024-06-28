@@ -47,7 +47,7 @@ export default function TopPage(){
     }, []);
 
     function handleResize() {
-        if (window.innerWidth <= 768) { setDevice("mb") } else { setDevice("pc") }
+        if (window.outerWidth <= 768) { setDevice("mb") } else { setDevice("pc") }
     }
     function getPosts() {
         axios.get(words.api.admin.post.list).then(function(response) {

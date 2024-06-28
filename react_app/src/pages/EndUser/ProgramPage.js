@@ -14,7 +14,7 @@ export default function ProgramPage(){
         document.title = words.terms.program.titleJP;
 
         function handleResize() {
-            if (window.innerWidth <= words.device.mb2) { setDevice("mb") } else { setDevice("pc") }
+            if (window.outerWidth <= words.device.mb2) { setDevice("mb") } else { setDevice("pc") }
         }
         handleResize();
         window.addEventListener('resize', handleResize);

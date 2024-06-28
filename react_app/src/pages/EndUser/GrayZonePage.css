@@ -130,6 +130,9 @@
 }
 
 @media (max-width: 768px) {
+    .grayzone button {
+        width: 100%;
+    }
     .grayzone section.intro .content-wrapper {
         flex-direction: column;
     }
@@ -150,6 +153,9 @@
     .grayzone section.message-1 {
         background: none;
         padding: var(--space-base);
+    }
+    .grayzone section.message-1 .p-title {
+        font-size: 32px;
     }
     .grayzone section.message-2 .p1 {
         flex-direction: column-reverse;
@@ -181,5 +187,46 @@
     .grayzone section.message-2 .p2 .content-wrapper {
         padding: 0;
         margin-bottom: var(--space-xl);
+    }
+    .grayzone section.message-3 .content-wrapper {
+        padding: var(--space-base);
+    }
+    .grayzone section.message-4 {
+        flex-direction: column;
+    }
+    .grayzone section.message-4 .left-wrapper {
+        padding: var(--space-base);
+        width: 100vw;
+        height: auto;
+    }
+
+    .grayzone section.message-4 .right-wrapper {
+        /* height: auto; */
+        align-content: center;
+    }
+    .grayzone section.message-4 .right-wrapper .flex-row-start {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .grayzone section.message-4 .gradient {
+        height: 180vh;
+    }
+    .grayzone section.message-5 {
+        flex-direction: column;
+    }
+    .grayzone section.message-5 .img-wrapper {
+        margin: 0 auto;
+        margin-top: -180px;
+    }
+    .grayzone section.message-5 .spark-p756 {
+        width: 200px;
+        height: 200px;
+        margin: 0;
+    }
+    .grayzone section.message-5 .content-wrapper {
+        width: 100%;
+        margin: 0;
+        padding: var(--space-base);
     }
 }

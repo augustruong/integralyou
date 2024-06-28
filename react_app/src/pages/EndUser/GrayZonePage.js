@@ -6,7 +6,8 @@ import './GrayZonePage.css'
 export default function GrayZonePage(){
     const [device,setDevice] = useState("");
     function handleResize() {
-        if (window.innerWidth <= 768) { setDevice("mb") } else { setDevice("pc") }
+        if (window.outerWidth <= 768) { setDevice("mb") } else { setDevice("pc") }
+        console.log(window.outerWidth)
     }
     useEffect(() => {
         handleResize();

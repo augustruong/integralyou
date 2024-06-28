@@ -15,7 +15,7 @@ export default function MessagePage(){
         document.title = words.terms.message.titleJP;
 
         function handleResize() {
-            if (window.innerWidth <= words.device.mb1) { setDevice("mb") } else { setDevice("pc") }
+            if (window.outerWidth <= words.device.mb1) { setDevice("mb") } else { setDevice("pc") }
         }
         handleResize()
         window.addEventListener('resize', handleResize);

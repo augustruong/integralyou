@@ -16,7 +16,7 @@ export default function ProfilePage(){
         document.title = words.terms.profile.titleJP;
 
         function handleResize() {
-            if (window.innerWidth <= words.device.mb3) { setDevice("mob") } else { setDevice("pc") }
+            if (window.outerWidth <= words.device.mb3) { setDevice("mob") } else { setDevice("pc") }
         }
         handleResize();
         window.addEventListener('resize', handleResize);
