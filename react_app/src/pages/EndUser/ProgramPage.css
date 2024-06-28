@@ -1,13 +1,11 @@
-.program{ padding-top: 90px; }
+.program{ padding-top: 120px; }
 /* .program section { min-height: 100vh; } */
 
 .program section.intro {
     text-align: center;
     max-height: 900px;
 }
-.program section.intro .p-title {
-    margin: var(--space-xl);
-}
+
 .program section.intro > .layout-2 {
     padding: 50px 0 150px 0;
     background-color: #FFEDEA;
@@ -129,7 +127,7 @@
     height: auto;
     background-color: #FFF8F7;
     padding-top: 100px;
-    padding-bottom: 150px;
+    padding-bottom: 100px;
 }
 .program section.courses .gallery {
     display: flex;
@@ -140,6 +138,9 @@
 }
 .program section.courses .gallery .img-wrapper {
     max-width: 508px;
+}
+.program section.courses .gallery .img-wrapper img {
+    width: 100%;
 }
 .program section.courses .header {
     text-align: center;
@@ -155,7 +156,7 @@
 .program section.process {
     height: 100%;
     padding-top: 7%;
-    padding-bottom: 10%;
+    padding-bottom: 100px;
 }
 .program section.process .layout-1 {
     gap: var(--space-m);
@@ -185,7 +186,10 @@
     margin-top: 100px;
     margin-bottom: 150px;
 }
-
+.program section.schedule .img-wrapper {
+    padding-left: 5%;
+    padding-right: 5%; 
+}
 .program .header {
     text-align: center;
 }

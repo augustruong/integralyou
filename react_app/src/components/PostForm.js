@@ -58,9 +58,9 @@ const PostForm = ({
     const [category, setCategory] = useState('');
     
     useEffect(() => {
-        if (inputs.categoryId === 1) setCategory('Blog')
-        else if (inputs.categoryId === 2) setCategory('Interview')
-        else setCategory('News')
+        if (inputs.categoryId === 1) setCategory(words.post.category.blog)
+        else if (inputs.categoryId === 2) setCategory(words.post.category.interview)
+        else setCategory(words.post.category.news)
     });
     return (
         <div className="admin createNewPost">

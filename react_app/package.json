@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "react-error-overlay": "^6.0.9",
     "sass-loader": "^13.3.2"
   }
 }

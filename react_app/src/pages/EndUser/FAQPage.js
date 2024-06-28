@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
-
+import words from "../../words";
 import AccordionItem from "../../components/AccordionItem";
 
 export default function FAQPage(){
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.title = words.terms.faq.titleJP;
     }, []);
 
     return(
         <div className="faq layout-1 pt-150">
             <div className="header text-align-ct">
-                <div className="p-title mg-base">よくある質問</div>
+                <div className="p-title mx-s">{words.terms.faq.titleJP}</div>
+                <div className="en-title mb-l">{words.terms.faq.titleEN}</div>
                 <div className="spark p24"></div>
             </div>
             <div className="accordion max-w-900">

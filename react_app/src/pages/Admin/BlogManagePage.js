@@ -8,9 +8,8 @@ import './Admin.css'
 
 export default function BlogManagePage(){
     const [posts, setPosts] = useState([]);
-    const [selected, setSelected] = useState('Blog')
+    const [selected, setSelected] = useState(words.post.category.blog)
     const [showPopUp,setShowPopUp] = useState(false);
-    const navigate = useNavigate();
 
     useEffect(() => {
         getPosts();
@@ -27,31 +26,30 @@ export default function BlogManagePage(){
         });
         alert("Successfully Deleted");
     }
-     
-    function handleUploadButton(category) { 
-        // navigate(`/admin/createpost/${category}`) 
+    function toggleShowPopUp() {
+        setShowPopUp(!showPopUp)
     }
-    
+     
     return (
         <div className="admin blogList">
             <div className="header">
                 <a href="/admin/home">Back to Home</a>
                 <div className="flex-row justify-space-btw">
                     <h1>Posts List</h1>
-                    <button className="primary" onClick={() => {setShowPopUp(!showPopUp); console.log(showPopUp)}}>
+                    <button className="primary" onClick={() => toggleShowPopUp()}>
                         Upload a new post
                     </button>
                 </div>
             </div>
             <div className="category-group mt-base">
-                <button className={selected==='Blog'? 'selected mr-base' : 'mr-base'} onClick={() => setSelected('Blog')}>Blogs</button>
-                <button className={selected==='Interview'? 'selected mr-base' : 'mr-base'} onClick={() => setSelected('Interview')}>Interviews</button>
-                <button className={selected==='News'? 'selected mr-base' : 'mr-base'} onClick={() => setSelected('News')}>News</button>
+                <button className={selected===words.post.category.blog ? 'selected mr-base' : 'mr-base'} onClick={() => setSelected(words.post.category.blog)}>{words.post.category.blog}</button>
+                <button className={selected===words.post.category.interview ? 'selected mr-base' : 'mr-base'} onClick={() => setSelected(words.post.category.interview)}>{words.post.category.interview}</button>
+                <button className={selected===words.post.category.news ? 'selected mr-base' : 'mr-base'} onClick={() => setSelected(words.post.category.news)}>{words.post.category.news}</button>
             </div>
             <div>
-                {selected === 'News' &&
+                {selected === words.post.category.news &&
                     <div className="news pt-xl">
-                        <h2>News</h2>
+                        <h2>{words.post.category.news}</h2>
                         <table class="dbTable">
                             <thead>
                                 <tr>
@@ -83,9 +81,9 @@ export default function BlogManagePage(){
                         </table>
                     </div>
                 }
-                {selected === 'Interview' &&
+                {selected === words.post.category.interview &&
                 <div className="interview pt-xl">
-                    <h2>Interview</h2>
+                    <h2>{words.post.category.interview}</h2>
                     <table class="dbTable">
                         <thead>
                             <tr>
@@ -121,9 +119,9 @@ export default function BlogManagePage(){
                     </table>
                 </div>
                 }
-                {selected === 'Blog' &&
+                {selected === words.post.category.blog &&
                 <div className="blog pt-xl">
-                    <h2>Blog</h2>
+                    <h2>{words.post.category.blog}</h2>
                     <table class="dbTable">
                         <thead>
                             <tr>
@@ -167,13 +165,13 @@ export default function BlogManagePage(){
                         <a className="close" onClick={() => setShowPopUp(!showPopUp)}>&times;</a>
                         <div className="selection mt-base">
                             <Link to={`/admin/createpost/Blog`} >
-                                <button className="w-100pc mt-base">Blog</button>
+                                <button className="w-100pc mt-base">{words.post.category.blog}</button>
                             </Link>
                             <Link to={`/admin/createpost/Interview`} >
-                                <button className="w-100pc mt-base">Interview</button>
+                                <button className="w-100pc mt-base">{words.post.category.interview}</button>
                             </Link>
                             <Link to={`/admin/createpost/News`} >
-                                <button className="w-100pc mt-base">News</button>
+                                <button className="w-100pc mt-base">{words.post.category.news}</button>
                             </Link>
                         </div>
                     </div>

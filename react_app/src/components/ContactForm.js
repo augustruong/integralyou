@@ -21,12 +21,12 @@ export default function ContactForm(){
       };
 
     const contactSchema = Yup.object().shape({
-        lastname: Yup.string().required("必須項目です"),
-        firstname: Yup.string().required("必須項目です"),
-        email: Yup.string().email().required("必須項目です"),
-        phone: Yup.string().matches(/^[0-9]+$/, "数字のみを入力してください"),
-        title: Yup.string().required("必須項目です"),
-        message: Yup.string().required("必須項目です")
+        lastname: Yup.string().required(words.validation.mandatoryError),
+        firstname: Yup.string().required(words.validation.mandatoryError),
+        email: Yup.string().email().required(words.validation.mandatoryError),
+        phone: Yup.string().matches(/^[0-9]+$/, words.validation.numberError),
+        title: Yup.string().required(words.validation.mandatoryError),
+        message: Yup.string().required(words.validation.mandatoryError)
     });
 
     const handleSubmit = (values) => {
@@ -50,7 +50,9 @@ export default function ContactForm(){
                 return (
                     <div className="contact-form max-w-900 px-7pc text-align-ct">
                         <div className="header text-align-ct mb-xl">
-                            <div className="p-title mg-base">お問い合わせ</div>
+                            <div className="p-title mx-s">{words.terms.contact.titleJP}</div>
+                            <div className="en-title mb-l">{words.terms.contact.titleEN}</div>
+
                             <div className="spark p24 mb-m"></div>
                             <p className="text-align-ct">お問い合わせやご質問は、下記のフォームをご利用いただくか、
                                 {window.innerWidth > 640 ? <br/> : ""}

@@ -18,7 +18,7 @@ export default function SubscribeForm(){
       };
 
     const subscribeSchema = Yup.object().shape({
-        email: Yup.string().email().required("必須項目です"),
+        email: Yup.string().email().required(words.validation.mandatoryError),
     });
 
     const handleSubmit = (values) => {
@@ -73,8 +73,7 @@ export default function SubscribeForm(){
                             <div className="actMsg mb-w-100pc px-5pc py-m" data-aos="flip-right">
                                 <div className="flex-column-ct gap-base">
                                     <img src={process.env.PUBLIC_URL + `/img/icon/i-check.svg`} style={{width:"64px"}}/>
-                                    <p className="text-align-ct">ご登録いただきありがとうございました!<br/>
-                                    他の方も登録しましょうか？</p>
+                                    <p className="text-align-ct">ご登録いただきありがとうございました!</p>
                                 </div>
                                 <button name="back" className="mt-base" onClick={() => setSucceed(false)}>フォームに戻る</button>
                             </div>

@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import words from "../../words";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
 import './MessagePage.css'
 
 export default function MessagePage(){
-    const [device,setDevice] = useState("pc");
+    const [device,setDevice] = useState("");
     const [offsetY,setOffsetY] = useState(0);
     const handleScroll = () => setOffsetY(window.pageYOffset);
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.title = words.terms.message.titleJP;
 
         function handleResize() {
-            if (window.innerWidth <= 768) { setDevice("mb") } else { setDevice("pc") }
+            if (window.innerWidth <= words.device.mb1) { setDevice("mb") } else { setDevice("pc") }
         }
+        handleResize()
         window.addEventListener('resize', handleResize);
 
         Aos.init({duration: 2000});
@@ -31,8 +32,11 @@ export default function MessagePage(){
                     <img src={process.env.PUBLIC_URL + window.innerWidth < 768 ? `/img/message-you-mb.png` : `/img/message-you-pc.png`} 
                          className="w-100pc" data-aos="fade-right"/>
                 </div>
-                <div className="content-wrapper flex-column-start gap-l">
-                    <div className="p-title">メッセージ</div>
+                <div className="content-wrapper flex-column-start">
+                    <div className="p-title mx-s">{words.terms.message.titleJP}</div>
+                    <div className="en-title mb-l">{words.terms.message.titleEN}</div>
+                    <div className="spark p24"></div>
+                    
                     <p>生き方とキャリアを考えるとき<br/>
                     「ひとりで考えても答えが出ない問題」に<br/>
                     ぶつかることが必ずあります。<br/><br/>
@@ -59,9 +63,9 @@ export default function MessagePage(){
                         </div>
                 </div>
             </div>
-            <section className="second layout-1">
+            <section className="second layout-1 mt-100">
                 <div className="flex-column-ct">
-                    <div className="sub-title">クライアントの主なテーマ</div>
+                    <div className="sub-title">{words.terms.message.topics}</div>
                     <div className="tag-wrapper">
                         <div className="tag">仕事・キャリア</div>
                         <div className="tag">自己理解・自己分析</div>

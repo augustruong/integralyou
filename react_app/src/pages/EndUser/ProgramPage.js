@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
+import words from "../../words";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import './ProgramPage.css'
 
 export default function ProgramPage(){
-    const [device,setDevice] = useState("pc");
+    const [device,setDevice] = useState("");
     const [offsetY,setOffsetY] = useState(0);
     const handleScroll = () => setOffsetY(window.pageYOffset);
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.title = words.terms.program.titleJP;
 
         function handleResize() {
-            if (window.innerWidth <= 1080) { setDevice("mb") } else { setDevice("pc") }
+            if (window.innerWidth <= words.device.mb2) { setDevice("mb") } else { setDevice("pc") }
         }
+        handleResize();
         window.addEventListener('resize', handleResize);
 
         Aos.init({duration: 2000});
@@ -24,14 +27,16 @@ export default function ProgramPage(){
     return(
         <div className="program">
             <section className="intro">
-                <div className="p-title">プログラム</div>
+                <div className="p-title mx-s">{words.terms.program.titleJP}</div>
+                <div className="en-title mb-l">{words.terms.program.titleEN}</div>
+
                 <div className="layout-2">
                     <div className="img-wrapper" data-aos="fade-down" style={{transform: `translateY(${offsetY * 0.04}px)`}} >
                         <img data-aos="fade-right"  src={process.env.PUBLIC_URL + `/img/IMG_3793.jpg`}/>
                     </div>
                     <div className="content-wrapper">
                         <img className="spark" src={process.env.PUBLIC_URL + `/img/spark.svg`}/>
-                        <div className="m-title">「人生のミッション探索コーチング」</div>
+                        <div className="m-title">{words.terms.program.coachingMission}</div>
                         <p>
                             クライアントが「自分のミッションを果たしていると感じられる生き方」を実現するためのマンツーマンのサポートプログラムです。<br/>
                             コーチングやカウンセリングのメソッドを援用したセッションを重ねる
@@ -42,7 +47,7 @@ export default function ProgramPage(){
                 </div>  
             </section>
             <section className="features flex-column-ct" data-aos="fade-down" style={{transform: `translateY(${offsetY * 0.06}px)`}}>
-                <div className="m-title">integral youのサポートプログラムが目指すもの</div>
+                <div className="m-title">{words.terms.program.goals}</div>
                 <img  className="spark" src={process.env.PUBLIC_URL + `/img/spark.svg`}/>
                 <div className="items">
                     <div className="feature-item" data-aos="flip-right" >
@@ -65,7 +70,7 @@ export default function ProgramPage(){
                         <img src={process.env.PUBLIC_URL + `/img/program/arrowRight.svg`}/>
                     </div>
                     <div className="flex-column-ct">
-                        <div className="p-title">4 STEPS</div>
+                        <div className="p-title">{words.terms.program.steps}</div>
                         <p className="text-align-ct">
                         <span className="primary-pink bold">integral you</span>がご提供するサポートプログラムの具体的なステップは、概ね次の通りです。<br/>
                         創りたい未来を現実化させるための４Stepsです。
@@ -119,10 +124,10 @@ export default function ProgramPage(){
             </section>
             <section className="courses layout-1">
                 <div className="header">
-                    <div className="p-title">コース</div>
+                    <div className="p-title">{words.terms.program.course}</div>
                     <p className="text-align-ct">
-                        コースは<span className="bold label">「6ヵ月コース」</span>と<span className="bold">「4ヵ月コース」</span>の２つ。<br/>
-                        コースをご選択される前に、<span className="bold">「60分コーチングセッション」</span>を受けていただくことをおすすめしています。
+                        コースは<span className="bold label">「{words.terms.program.month6}」</span>と<span className="bold">「{words.terms.program.month4}」</span>の２つ。<br/>
+                        コースをご選択される前に、<span className="bold">「{words.terms.program.trial}」</span>を受けていただくことをおすすめしています。
                     </p>
                     <div className="spark p24"></div>
                 </div>
@@ -146,7 +151,7 @@ export default function ProgramPage(){
             </section>
             <section className="process layout-1">
                 <div className="header">
-                    <div className="p-title">セッションの進め方</div>
+                    <div className="p-title">{words.terms.program.progress}</div>
                     <div className="spark p24"></div>
                 </div>
                 <div className="gallery layout-1">
@@ -179,12 +184,12 @@ export default function ProgramPage(){
             </section>
             <section className="schedule layout-1">
                 <div className="header">
-                    <div className="p-title">セッションスケジュール（例）</div>
+                    <div className="p-title">{words.terms.program.schedule}</div>
                     <div className="spark p24"></div>
                 </div>
-                <div className="layout-1">
-                    <img src={process.env.PUBLIC_URL + `/img/program/table-6m-${device}.png`} data-aos="fade-right"/>
-                    <img src={process.env.PUBLIC_URL + `/img/program/table-4m-${device}.png`} data-aos="fade-left"/>
+                <div className="img-wrapper">
+                    <img src={process.env.PUBLIC_URL + `/img/program/table-6m-${device}.png`} data-aos="fade-right" className="w-100pc"/>
+                    <img src={process.env.PUBLIC_URL + `/img/program/table-4m-${device}.png`} data-aos="fade-left" className="w-100pc mt-xxl"/>
                 </div>
             </section>
         </div>

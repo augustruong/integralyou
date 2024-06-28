@@ -11,6 +11,8 @@ export default function NewsPage(){
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.title = words.terms.news.titleJP;
+
         getPosts();
     }, []);
   
@@ -23,8 +25,9 @@ export default function NewsPage(){
     return(
         <div className="news layout-1 pt-150">
             <div className="header text-align-ct">
-                <div className="p-title mg-base">お知らせ</div>
-                <img  className="spark p24" />
+                <div className="p-title mx-s">{words.terms.news.titleJP}</div>
+                <div className="en-title mb-l">{words.terms.news.titleEN}</div>
+                <img className="spark p24" src={process.env.PUBLIC_URL + `/img/spark.svg`}/>
             </div>
             <div className="news-list">
             {posts.sort((a, b) => a.date < b.date ? 1 : -1).map((post) =>

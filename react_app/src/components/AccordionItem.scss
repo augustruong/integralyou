@@ -1,6 +1,5 @@
 $bg: #fff;
-$text: #7288a2;
-$gray: #4d5974;
+$text: #4f4f4f;
 $lightgray: #e5e5e5;
 $pink: var(--color-primary-pink);
 
@@ -87,7 +86,6 @@ $pink: var(--color-primary-pink);
         will-change: opacity, max-height;
         p {
         font-size: 14px;
-        font-weight: 300;
         margin: 2em 0;
         padding: 0 1em;
         }

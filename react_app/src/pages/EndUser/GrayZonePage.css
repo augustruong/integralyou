@@ -1,0 +1,185 @@
+.grayzone{ padding-top: 120px; }
+.grayzone section { min-height: 100vh; width: 100%;}
+.grayzone section.intro .content-wrapper {
+    max-width: 1176px;
+    width: 1176px;
+    align-items: center;
+    z-index: 10;
+} 
+.develop-disable, .gray-zone {
+    font-family: "MotoyaExAporo W55 W6 mono";
+    line-height: 150%;
+}
+.develop-disable {
+    font-size: 81px;
+    color: var(--color-primary-pink);
+}
+.gray-zone {
+    font-size: 72px;
+}
+.grayzone section.intro .content-wrapper p {
+    margin-top: -30px;
+}
+
+.grayzone section.intro .img-wrapper {
+    z-index: 1;
+    margin-top: -150px;
+}
+
+.grayzone section.message-1 {
+    background: url('/img/grayzone/message1.png');
+    background-size: cover;
+
+    position: relative;
+}
+.grayzone section.message-1 .gradient {
+    background: linear-gradient(0deg, rgba(255,133,164,1) -20%, rgba(255,133,164,0) 40%);
+    animation: gradientBlend 7s ease-in infinite;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
+.grayzone section.message-2 .p1{
+    padding-top: 100px;
+    padding-bottom: 150px;
+    justify-content: center;
+}
+.grayzone section.message-2 .p1 .content-wrapper {
+}
+.grayzone section.message-2 .p1 .img-wrapper .line{
+    width: 2px;
+    height: 70vh;
+    margin-left: 250px;
+    background-color: var(--color-primary-pink);
+    margin-top: -100px;
+}
+.grayzone section.message-2 .p1 .img-wrapper .spark {
+    margin-left: 150px;
+    margin-top: -80px;
+}
+.grayzone section.message-2 .p2{
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.grayzone section.message-2 .p2 .img-wrapper {
+    width: 50vw;
+}
+.grayzone section.message-2 .p2 .img-wrapper .line {
+    height: 1.5px;
+    width: 48vw;
+    background-color: var(--color-primary-pink);
+    margin-top: 30px;
+}
+.grayzone section.message-2 .p2 .img-wrapper .spark {
+    margin-left: 46vw;
+    margin-top: -35px;
+}
+.grayzone section.message-2 .p2 .content-wrapper {
+    padding-left: calc(var(--space-xxl)* 2);
+}
+.grayzone section.message-3 {
+    position: relative;;
+}
+.grayzone section.message-3  .img-wrapper img{
+    width: 100%;
+}
+
+.grayzone section.message-4 {
+    padding-top: 100px;
+    padding-bottom: 120px;
+    justify-content: center;
+
+}
+.grayzone section.message-4 .gradient {
+    background: linear-gradient(0deg, rgba(255,133,164,1) -20%, rgba(255,133,164,0) 40%);
+    animation: gradientBlend 7s ease-in infinite;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
+.grayzone section.message-4 .left-wrapper {
+    height: 80vh;
+    align-content: start;
+    width: 50vw;
+    padding-left: calc(var(--space-xxl)* 2);
+
+}
+.grayzone section.message-4 .right-wrapper {
+    height: 80vh;
+    align-content: end;
+    padding-left: calc(var(--space-xxl)* 2 - 72 - var(--space-xl));
+}
+.grayzone section.message-5 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    height: 100vh;
+}
+.grayzone section.message-5 .img-wrapper {
+    width: 50vw; 
+}
+
+.grayzone section.message-5 .spark-p756 {
+    margin-left: -20%;
+}
+.grayzone section.message-5 .content-wrapper {
+    /* margin-left: -100px; */
+    width: 50vw; 
+    padding-left: calc(var(--space-xxl)* 2);
+    align-content: center;
+}
+
+@media (max-width: 768px) {
+    .grayzone section.intro .content-wrapper {
+        flex-direction: column;
+    }
+    .grayzone section.intro .content-wrapper .title {
+        margin-bottom: var(--space-xxl);
+    }
+    .grayzone section.intro .content-wrapper .title span:last-child {
+        font-size: 56px;
+        line-height: 120%;
+    }
+    .grayzone section.intro .img-wrapper {
+        /* width: 100vw; */
+    }
+    .grayzone section.intro .img-wrapper img {
+        height: 60vh;
+        width: auto;
+    }
+    .grayzone section.message-1 {
+        background: none;
+        padding: var(--space-base);
+    }
+    .grayzone section.message-2 .p1 {
+        flex-direction: column-reverse;
+        padding: var(--space-base);
+    }
+    .grayzone section.message-2 .p2 {
+        flex-direction: column;
+        padding: var(--space-base);
+    }
+    .grayzone section.message-2 .p1 .spark {
+        width: 72px;
+        height: 72px;
+    }
+    .grayzone section.message-2 .p1 .img-wrapper .line {
+        height: 30vh;
+        margin-top: calc(var(--space-base)*-1);
+    }
+    .grayzone section.message-2 .p1 .img-wrapper .spark {
+        margin-left: 215px;
+        margin-top: -35px;
+    }
+    .grayzone section.message-2 .p2 .img-wrapper .line {
+        margin-left: calc(var(--space-base)*-1);
+        width: 80vw;
+    }
+    .grayzone section.message-2 .p2 .img-wrapper .spark {
+        margin-left: 250px;
+    }
+    .grayzone section.message-2 .p2 .content-wrapper {
+        padding: 0;
+        margin-bottom: var(--space-xl);
+    }
+}

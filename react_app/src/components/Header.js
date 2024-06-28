@@ -41,10 +41,11 @@ export default class Header extends React.Component {
     render() {
         return(
             <header id='header' className={this.state.show ? "show" : "hidden"}>
-                <NavLink to='/' className='logo' onClick={this.handleClick}>
-                    <img src={logo} />
-                </NavLink>
-
+                <div className='logo-wrapper'>
+                    <NavLink to='/' className='logo'onClick={this.handleClick}>
+                        <img src={logo} />
+                    </NavLink>
+                </div>
                 <div className='menu-icon' onClick={this.handleClick}>
                     <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'} />
                 </div>

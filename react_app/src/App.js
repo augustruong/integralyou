@@ -1,4 +1,4 @@
-import React, { } from 'react';
+import React from 'react';
 import './App.css';
    
 import {Routes, Route, useLocation} from 'react-router-dom';
@@ -10,6 +10,12 @@ import ProgramPage from "./pages/EndUser/ProgramPage";
 import InterviewPage from './pages/EndUser/InterviewPage';
 import BlogPage from './pages/EndUser/BlogPage';
 import NewsPage from './pages/EndUser/NewsPage';
+import FAQPage from './pages/EndUser/FAQPage';
+import ContactPage from './pages/EndUser/ContactPage';
+import PostDetail from './pages/EndUser/PostDetail';
+import TermsOfUse from './pages/EndUser/TermsOfUse';
+import PrivacyPolicy from './pages/EndUser/PrivacyPolicy';
+import GrayZonePage from './pages/EndUser/GrayZonePage';
 
 import BlogManagePage from "./pages/Admin/BlogManagePage";
 import CreatePost from './pages/Admin/CreatePost';
@@ -18,12 +24,10 @@ import AdminLogin from './pages/Admin/AdminLogin';
 import AdminHome from './pages/Admin/AdminHome';
 import LettersPage from "./pages/Admin/LettersPage";
 import SubscribersPage from "./pages/Admin/SubscribersPage";
-
+ 
 import Layout from './components/Layout';
 import words from './words';
-import FAQPage from './pages/EndUser/FAQPage';
-import ContactPage from './pages/EndUser/ContactPage';
-import PostDetail from './pages/EndUser/PostDetail';
+
  
 function App() {
     const token = localStorage.getItem('token')
@@ -41,7 +45,11 @@ function App() {
             <Route path={words.routes.user.contact} element={Layout(ContactPage)} />
             <Route path={words.routes.user.blogdetail} element={Layout(PostDetail)} />
             <Route path={words.routes.user.interviewdetail} element={Layout(PostDetail)} />
-  
+            <Route path={words.routes.user.terms} element={Layout(TermsOfUse)} />
+            <Route path={words.routes.user.policy} element={Layout(PrivacyPolicy)} />
+            <Route path={words.routes.user.grayzone} element={Layout(GrayZonePage)} />
+
+
             <Route path={words.routes.admin.login} element={<AdminLogin />} />
             <Route path={words.routes.admin.home} element={<AdminHome />} />
   
@@ -50,6 +58,7 @@ function App() {
             <Route path={words.routes.admin.editpost} element={<EditPost />} />
             <Route path={words.routes.admin.lettersmanage} element={<LettersPage />} />
             <Route path={words.routes.admin.subscribersmanage} element={<SubscribersPage />} />
+        
 
         </Routes>
     );

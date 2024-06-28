@@ -1,4 +1,4 @@
-/* .message{ padding-top: 90px; } */
+.message{ padding-top: 90px; }
 .message section { min-height: 100vh; width: 100%;}
 
 .message section.intro > div {
@@ -6,6 +6,10 @@
 }
 .message section.intro > .content-wrapper {
     padding-left: 10%;
+}
+.message section.intro > .content-wrapper > p {
+    margin-top: var(--space-xl);
+    display: inline-block;
 }
 .message section.second {
     margin-bottom: 100px;

@@ -14,7 +14,7 @@ import '../../App.css'
 
 export default function TopPage(){
     const navigate = useNavigate();
-    const [device,setDevice] = useState("pc");
+    const [device,setDevice] = useState("");
     const [posts, setPosts] = useState([]);
     const [inputs, setInputs] = useState([]);
     const [offsetY,setOffsetY] = useState(0);
@@ -38,6 +38,7 @@ export default function TopPage(){
         window.scrollTo(0, 0);
         
         getPosts();
+        handleResize();
         window.addEventListener('resize', handleResize);
 
         Aos.init({duration: 2000});
@@ -55,15 +56,36 @@ export default function TopPage(){
     }
     return(
         <div className="top-page">
-            <a className="news-icon" href='/news'>
-                <img src={process.env.PUBLIC_URL + `/img/icon/news.svg`}/>
-                <div className="text">お知らせ</div>   
-            </a>
+            <div className="bgGradient">
+                <div className="up"></div>
+                <div className="down"></div>
+                <div className="left"></div>
+                <div className="right"></div>
+            </div>
+            
             <section className="hero">
                 <div className="top-banner">生き方とキャリアに迷うあなたへ</div>
-                <div className="kv-wrapper">
-                    <img className="mx-auto" src={process.env.PUBLIC_URL + `/img/keyvisual.png`}/>
+                <div className="content">
+                    <div className="kv-wrapper" data-aos="fade-down" style={{transform: `translateY(${offsetY * 0.04}px)`}}>
+                        <img src={process.env.PUBLIC_URL + `/img/kv-model.png`}/>
+                    </div> 
+                    <div className="text-wrapper">
+                        <div className="kv-title mb-m">人生の<span className="black-pink">ミッション</span><br/>を<span className="black-pink">生きよう</span></div>
+                        <div className="kv-subtitle flex-row-ct gap-m">
+                            <div className="spark p24"></div>
+                            <p>チャレンジし、成長して、<br/>豊かに生きるあなたへ進化する</p>
+                        </div>
+                        <div className="cta-group">
+                            <a href='/program'>
+                                <button className="primary mr-base">コースを見る</button>
+                            </a>
+                            <a href='/profile'>
+                                <button>プロフィールを見る</button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                <div className="spark-p278"></div>
             </section>
             <section className="video layout-1">
                 <iframe width="810" height="460" src="https://www.youtube.com/embed/WrxqqvW1wKk?si=4uTgOSM_sJszIIE8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -195,9 +217,11 @@ export default function TopPage(){
                         <button className="primary">今すぐ体験したい</button>
                     </a>
                 </div>
-                <div className="img-wrapper pc-flex-row-ct mb-flex-col-ct mb-w-100pc">
-                    <img src={process.env.PUBLIC_URL + `/img/trial.png`} className="mb-w-100pc" style={{zIndex:"100"}}/>
-                    <div data-aos="fade-right">
+                <div className="visual-wrapper pc-flex-row-ct mb-flex-col-ct mb-w-100pc">
+                    <div className="img-wrapper">
+                        <img src={process.env.PUBLIC_URL + `/img/trial.png`} className="mb-w-100pc" style={{zIndex:"100"}}/>
+                    </div>
+                    <div className="text-wrapper" data-aos="fade-right">
                         <div className="sub-title">60分コーチングセッションで得られるもの</div>
                         <div className="bullet-list">
                             <div className="bullet-point">自分の現在地が把握できる</div>
@@ -271,7 +295,7 @@ export default function TopPage(){
                     <img className="mark1" src={process.env.PUBLIC_URL + `/img/mark1.png`}/>
                     <img className="mark2" src={process.env.PUBLIC_URL + `/img/mark2.png`}/>
                 </div>
-                <div className={device === 'pc' ? `flex-row-ct gap-base` : `flex-row-ct gap-s`}>
+                <div className="cta-group flex-row-ct">
                     <a href='/faq'>
                         <button className="primary">FAQ を見る</button>
                     </a>

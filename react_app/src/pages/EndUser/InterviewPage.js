@@ -6,11 +6,12 @@ import words from "../../words";
 import BlogItem from "../../components/BlogItem";
 
 export default function InterviewPage(){
-    const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.title = words.terms.interview.titleJP;
+
         getPosts();
     }, []);
   
@@ -22,7 +23,8 @@ export default function InterviewPage(){
     return(
         <div className="interview layout-1 pt-150">
             <div className="header text-align-ct">
-                <div className="p-title mg-base">クライエントレビュー</div>
+                <div className="p-title mx-s">{words.terms.interview.titleJP}</div>
+                <div className="en-title mb-l">{words.terms.interview.titleEN}</div>
                 <div className="spark p24"></div>
             </div>
             <div className="grid gap-xl md:grid-cols-2 xl:grid-cols-3">

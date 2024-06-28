@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
+import words from "../../words";
 
 import ContactForm from "../../components/ContactForm";
 
 export default function ContactPage(){
     useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
+        document.title = words.terms.contact.titleJP;
     }, [])
 
     return(

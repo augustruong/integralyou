@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { NavLink } from 'react-router-dom';
 import words from "../words";
 
 import './BlogItem.css'
 
 export default function BlogItem(props){
-    useEffect(() => {
-        console.log(props)
-    }, []);
     return(
         <div className="blog-item flex-column-start gap-base">
                 <NavLink to={`/${props.category}/${props.postId}`} className="thumbnail">

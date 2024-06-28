@@ -9,7 +9,7 @@
     flex-direction: row;
     padding: 18px 50px;
     width: 100%;
-    background: var(--color-white);
+    background-color: #FFF9F9;
 }
 #header a {
     color: var(--color-gray);
@@ -30,8 +30,9 @@
 }
   
 #header a {cursor: pointer;}
-#header .logo {
-    width: 160px;
+#header .logo-wrapper {
+    width: 54px;
+    margin-right: 106px;
 }
 #header .logo > img {
     width: 50px;
@@ -60,7 +61,7 @@ a.nav__link.active {
 
 @media screen and (max-width: 1080px) {
     #header {
-        height: 85px;
+        height: 75px;
         flex-direction: row;
         width: 100vw;
     }

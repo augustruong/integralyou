@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import words from '../words';
 import './Footer.css'
 
 export default function Footer() {
@@ -27,7 +27,7 @@ export default function Footer() {
                     <div className='sns-wrapper'>
                         <div className='label'>FOLLOW ME ON SNS</div>
                         <div className='sns-list'>
-                            <NavLink to='https://www.instagram.com/yu.jaeng.i/' target='_blank'>
+                            <NavLink to='https://www.instagram.com/yu.kwsm/' target='_blank'>
                                 <img src={process.env.PUBLIC_URL + `/img/sns/Instagram_Logo.png`}/>
                             </NavLink>
                             <NavLink to='https://ameblo.jp/integralyou/' target='_blank'>
@@ -37,9 +37,8 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className='policy flex-row-ct'>
-                    <NavLink to='/'>利用規約</NavLink>
-                    <NavLink to='/'>個人情報保護方針</NavLink>
-                    <NavLink to='/'>サービスポリシー</NavLink>
+                    <NavLink to='/terms-of-use'>{words.terms.termsofuse.titleJP}</NavLink>
+                    <NavLink to='/privacy-policy'>{words.terms.privacypolicy.titleJP}</NavLink>
                 </div>
             </div>
             <div className='copyright'>Copyright © 2021 integral you. All Rights Reserved.</div>

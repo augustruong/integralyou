@@ -23,7 +23,8 @@
 }
 .profile > section.intro > .content > p, section.history > .content > p {
     width: 420px;
-    margin-top: var(--space-s);
+    margin-top: var(--space-xl);
+    display: inline-block;
 }
 .polaroid {
     position: absolute;
@@ -40,7 +41,7 @@
 }
 .polaroid.i2 {
     top: 65%;
-    left: -10%;
+    left: 0%;
 }
 .polaroid.i3 {
     top: 20%;
