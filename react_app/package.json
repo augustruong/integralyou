@@ -46,7 +46,13 @@
     ]
   },
   "devDependencies": {
+    "css-loader": "^7.1.2",
+    "dotenv-webpack": "^8.1.0",
     "react-error-overlay": "^6.0.9",
-    "sass-loader": "^13.3.2"
+    "sass-loader": "^13.3.3",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.10",
+    "ts-loader": "^9.5.1",
+    "webpack-dev-middleware": "^7.2.1"
   }
 }
