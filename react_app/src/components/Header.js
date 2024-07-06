@@ -53,6 +53,9 @@ export default class Header extends React.Component {
                 <nav className={this.state.clicked ? 'header__menu active' : 'header__menu'}>
                     <ul className='nav__list'>
                         <li className='nav__item'>
+                            <NavLink to='/grayzone'  className='nav__link' activeClassName="active" onClick={this.closeMobileMenu}>グレーゾーン</NavLink>
+                        </li>
+                        <li className='nav__item'>
                             <NavLink to='/profile'  className='nav__link' activeClassName="active" onClick={this.closeMobileMenu}>プローフィル</NavLink>
                         </li>
                         <li className='nav__item'>
@@ -67,6 +70,7 @@ export default class Header extends React.Component {
                         <li className='nav__item'>
                             <NavLink to='/blog'  className='nav__link' activeClassName="active" onClick={this.closeMobileMenu}>ブログ</NavLink>
                         </li>
+                        
                         <li className='nav__item'>
                             <NavLink to='/faq'  className='nav__link' activeClassName="active" onClick={this.closeMobileMenu}>FAQ</NavLink>
                         </li>

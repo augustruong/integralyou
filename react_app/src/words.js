@@ -92,6 +92,9 @@ const words = {
     },
 
     terms: {
+        toppage: {
+            title: "Integral You"
+        },
         profile: {
             titleJP: "プローフィル",
             titleEN: "Profile",

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import words from "../../words";
@@ -13,30 +12,30 @@ import '../../App.css'
 
 
 export default function TopPage(){
-    const navigate = useNavigate();
     const [device,setDevice] = useState("");
     const [posts, setPosts] = useState([]);
-    const [inputs, setInputs] = useState([]);
     const [offsetY,setOffsetY] = useState(0);
     const handleScroll = () => setOffsetY(window.pageYOffset);
-    const [submitted,setSubmitted] = useState(false);
+    // const [inputs, setInputs] = useState([]);
+    // const [submitted,setSubmitted] = useState(false);
 
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}));
-    }
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    // const handleChange = (event) => {
+    //     const name = event.target.name;
+    //     const value = event.target.value;
+    //     setInputs(values => ({...values, [name]: value}));
+    // }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
   
-        axios.post(words.api.admin.subscriber.add, inputs).then(function(response){
-            setSubmitted(true)
-        }); 
-    }
+    //     axios.post(words.api.admin.subscriber.add, inputs).then(function(response){
+    //         setSubmitted(true)
+    //     }); 
+    // }
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        
+        document.title = words.terms.toppage.title;
+
         getPosts();
         handleResize();
         window.addEventListener('resize', handleResize);

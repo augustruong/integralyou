@@ -461,7 +461,7 @@ button.disabled:hover {
 /* ---------------------------------------------------------------------------ELEMENTS */
 
 .spark {
-  animation: spin 7s infinite linear;
+  animation: spin 5s infinite linear;
   background: url('/img/spark.svg');
   background-size: cover;
   display: inline-block;
@@ -476,7 +476,7 @@ button.disabled:hover {
 
 
 .spark-p278 {
-  animation: spin 7s infinite linear;
+  animation: spin 28s infinite linear;
   background: url('/img/spark-p278.png');
   background-size: cover;
   display: inline-block;

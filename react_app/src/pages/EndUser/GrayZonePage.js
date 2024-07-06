@@ -1,21 +1,29 @@
 import React, { useState,useEffect } from "react";
 import words from "../../words";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 import './GrayZonePage.css'
 
 export default function GrayZonePage(){
     const [device,setDevice] = useState("");
+    const [offsetY,setOffsetY] = useState(0);
+    const handleScroll = () => setOffsetY(window.pageYOffset);
+
     function handleResize() {
         if (window.outerWidth <= 768) { setDevice("mb") } else { setDevice("pc") }
         console.log(window.outerWidth)
     }
     useEffect(() => {
-        handleResize();
-        console.log(device)
-        window.addEventListener('resize', handleResize);
-
         window.scrollTo(0, 0);
         document.title = words.terms.grayzone.titleJP;
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        Aos.init({duration: 2000});
+        window.addEventListener("scroll",handleScroll);
+        return() => window.removeEventListener("scroll", handleScroll);
     }, []);
     
     return(
@@ -32,11 +40,11 @@ export default function GrayZonePage(){
                         周囲との違和感を抱えているのではないでしょうか。
                     </p>
                 </div>
-                <div className="img-wrapper">
+                <div className="img-wrapper" data-aos="fade-down" style={{transform: `translateY(${offsetY * 0.06}px)`}}>
                     <img src={process.env.PUBLIC_URL + `/img/grayzone/grayzone-kv.png`} className="w-100pc"/>
                 </div>
             </section>
-            <section className="message-1 layout-1">
+            <section className="message-1 layout-1" data-aos="fade-down">
                 <div className="content-wrapper text-align-ct">
                     <div className="p-title mb-xl">
                     「なんで私はふつうにできないの？」<br/>「私、おかしいの？」
@@ -58,15 +66,15 @@ export default function GrayZonePage(){
                         ミスが多く周りにあきれられている。<br/>職場ではいつも謝っている。
                         </p>
                     </div>
-                    <div className="img-wrapper">
+                    <div className="img-wrapper" data-aos="fade-down">
                         <div className="line"></div>
                         <div className="spark p200"></div>
                     </div>
                 </div>
                 <div className="p2 flex-row">
-                    <div className="img-wrapper">
+                    <div className="img-wrapper" data-aos="fade-right">
                     <   div className="line"></div>
-                        <div className="spark p72"></div>
+                        <div className="spark p72" ></div>
                     </div>
                     <div className="content-wrapper">
                         <p>
@@ -92,7 +100,7 @@ export default function GrayZonePage(){
                 </div>
             </section>
             <section className="message-3 layout-2">
-                <div className="img-wrapper">
+                <div className="img-wrapper" data-aos="fade-up">
                     <img src={process.env.PUBLIC_URL + `/img/grayzone/mystory.png`} className="w-100pc"/>
                 </div>
                 <div className="content-wrapper">
@@ -132,7 +140,9 @@ export default function GrayZonePage(){
                 </div>
                 <div className="right-wrapper">
                     <div className="flex-row-start gap-xl">
+                        <div data-aos="fade-right">
                         <div className="spark p72"></div>
+                        </div>
                         <p>
                         そして最終的に、<br/>
                         自分の特性を活かし、人生を動かしていく方法を<br/>
