@@ -87,12 +87,12 @@ export default function TopPage(){
                 </div>
                 <div className="spark-p278"></div>
             </section>
-            <section className="video layout-1">
+            {/* <section className="video layout-1">
                 <iframe width="810" height="460" src="https://www.youtube.com/embed/WrxqqvW1wKk?si=4uTgOSM_sJszIIE8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <a href='/profile'>
                     <button className="primary">プロフィールを見る</button>
                 </a>
-            </section>
+            </section> */}
             <div className="message layout-2">
                 <section className="intro layout-2">
                     <div className="img-wrapper" data-aos="fade-down">

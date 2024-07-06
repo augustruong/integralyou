@@ -96,6 +96,7 @@
         padding-left: 5%;
         padding-right: 5%;
         align-items: center;
+        margin-bottom: 150px;
     }
     .m-scroll {
         margin-top: var(--space-xl);

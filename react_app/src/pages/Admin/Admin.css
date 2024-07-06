@@ -1,7 +1,18 @@
-.admin.blogList, .admin.createNewPost, .admin.letters, .admin.subscribers {
+.admin.blogList, .admin.createNewPost, .admin.letters, .admin.subscribers, .admin.login {
     padding-top: 5%;
     max-width: 1000px;
     margin: 0 auto;
+}
+.admin.login .container {
+    vertical-align: middle;
+    height: 75vh;
+}
+.admin.login .container .mb-3 label {
+    width: 100px;
+    display: inline-block;
+}
+.admin.login .container button {
+    width: 100%;
 }
 .dbTable .id {
     width: 50px;

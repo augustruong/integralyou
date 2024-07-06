@@ -22,7 +22,6 @@
 }
 
 body {
-  overflow-x: hidden;
   font-family: 'Noto Sans JP',sans-serif;
   font-size: 14px;
   color: var(--color-gray);
@@ -35,5 +34,7 @@ body, html {
   scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
   scrollbar-width: none;
+  overflow-x: hidden;
+
 }
 

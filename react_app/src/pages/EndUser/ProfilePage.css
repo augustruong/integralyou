@@ -246,3 +246,10 @@ section.history.even > .content {
         display: none;
     }
 }
+
+@media (max-width: 768px) {
+    section.history.even > .content, section.history.odd > .content {
+        padding-right: var(--space-base);
+        padding-left: var(--space-base);
+    }
+}

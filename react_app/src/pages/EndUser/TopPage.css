@@ -274,7 +274,7 @@ section.blog .blog-list {
         gap: var(--space-base);
     }
     section.hero > .content .kv-wrapper {
-        width: 250px;
+        width: 320px;
     }
     section.hero > .spark-p278 {
         top: 245px;
@@ -285,14 +285,14 @@ section.blog .blog-list {
     }
     section.hero > .content .kv-title {
         line-height: 130%;
-        font-size: 43px;
+        font-size: 48px;
+        letter-spacing: -0.03em;
         margin-bottom: var(--space-base);
     }
     section.hero > .content .kv-subtitle {
         margin-bottom: var(--space-base);
     }
     section.hero > .content .text-wrapper .cta-group a button {
-        width: 100%;
         margin-bottom: var(--space-s);
     }
     section.trial > .visual-wrapper > .img-wrapper{
@@ -300,7 +300,6 @@ section.blog .blog-list {
     }
     .newsletter-form {
         width: 100%;
-        padding: 0 20px;
     }
     .newsletter-form form, .newsletter-form form .form-row, .newsletter-form form .form-row div, .newsletter-form form .form-row div input {
         width: 100%;
@@ -308,7 +307,36 @@ section.blog .blog-list {
     .newsletter-form form .form-row {
         flex-direction: column;
     }
+    section.contact {
+        margin-top: 100px;
+        margin-bottom: 150px;
+    }
     section.contact .cta-group {
         gap: var(--space-s);
+        flex-direction: column;
+        width: 100%;
+    }
+    section.contact .cta-group a, section.contact .cta-group a button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    section.hero > .content .kv-wrapper {
+        width: 300px;
+    }
+    section.hero > .content .kv-title {
+        font-size: 45px;
+        letter-spacing: -0.03em;
+    }
+}
+
+
+@media (max-width: 376px) {
+    section.hero > .content .kv-wrapper {
+        width: 260px;
+    }
+    section.hero > .content .kv-title {
+        font-size: 43px;
     }
 }

@@ -55,3 +55,25 @@
 .newsletter-form .actMsg {
     background-color: #FFE9EF;
 }
+
+@media (max-width: 768px) {
+    .contact-form .header, .contact-form .body {
+        padding-left: var(--space-base);
+        padding-right: var(--space-base);
+        width: 100vw;
+    }
+    .contact-form .body .form-row:first-child {
+        flex-direction: column;
+        width: 100%;
+    }
+    .contact-form .body .form-row div, .contact-form .body .form-row div input {
+        width: 100%;
+    }
+    .contact-form .body .form-row div input, input#email, input#phone, input#title {
+        height: 50px;
+    }
+    textarea#message {
+        height: 150px;
+        margin-bottom: var(--space-m);
+    }
+}
