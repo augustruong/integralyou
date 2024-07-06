@@ -109,12 +109,26 @@ export default function ProgramPage(){
                         </p>
                     </div>
                     <div className="step-item">
+                        {device === "pc" &&
                         <div data-aos="flip-left" data-aos-delay="200">
                             <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-2.svg`} />
                         </div>
+                        }
+                        {device === "mb" &&
+                        <div data-aos="flip-left">
+                            <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-2.svg`} />
+                        </div>
+                        }
+                        {device === "pc" &&
                         <div data-aos="fade-right" data-aos-delay="200">
                             <div className="label">Step 2</div>
                         </div>
+                        }
+                        {device === "mb" &&
+                        <div data-aos="fade-right">
+                            <div className="label">Step 2</div>
+                        </div>
+                        }
                         <p>
                             ・やりたいこと、できることを整理する<br/>
                             ・本当はやりたくないことを知る<br/>
@@ -122,12 +136,26 @@ export default function ProgramPage(){
                         </p>
                     </div>
                     <div className="step-item">
+                        {device === "pc" &&
                         <div data-aos="flip-left" data-aos-delay="400">
                             <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-3.svg`} />
                         </div>
+                        }
+                        {device === "mb" &&
+                        <div data-aos="flip-left">
+                            <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-3.svg`} />
+                        </div>
+                        }
+                        {device === "pc" &&
                         <div data-aos="fade-right" data-aos-delay="400">
                             <div className="label">Step 3</div>
                         </div>
+                        }
+                        {device === "mb" &&
+                        <div data-aos="fade-right">
+                            <div className="label">Step 3</div>
+                        </div>
+                        }
                         <p>
                             ・具体的・長期的な目標を設定する<br/>
                             ・ぶれない目的意識を創る<br/>
@@ -136,12 +164,26 @@ export default function ProgramPage(){
                         </p>
                     </div>
                     <div className="step-item">
+                        {device === "pc" &&
                         <div data-aos="flip-left" data-aos-delay="600">
                             <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-4.svg`}/>
                         </div>
+                        }
+                        {device === "mb" &&
+                        <div data-aos="flip-left">
+                            <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-4.svg`}/>
+                        </div>
+                        }
+                        {device === "pc" &&
                         <div data-aos="fade-right" data-aos-delay="600">
                             <div className="label" >Step 4</div>
                         </div>
+                        }
+                        {device === "mb" &&
+                        <div data-aos="fade-right">
+                            <div className="label" >Step 4</div>
+                        </div>
+                        }
                         <p>
                             ・行動できるマインドを強化する<br/>
                             ・失敗、落ち込み、立ち直りを経験する<br/>

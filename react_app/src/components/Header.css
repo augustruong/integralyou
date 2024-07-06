@@ -143,4 +143,7 @@ a.nav__link.active {
     #header > .header__menu ul li:last-child a button {
         font-size: 20px;
     }
+    #header > .header__menu ul li {
+        margin-top: 0px;
+    }
 }

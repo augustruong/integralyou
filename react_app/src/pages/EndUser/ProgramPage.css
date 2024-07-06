@@ -223,6 +223,9 @@
     .program section.features .feature-item {
         margin-top: 80%;
     }
+    .program section.features .feature-item > .img-wrapper {
+        transform: none;
+    }
     .program section.steps .header, .program section.courses .header {
         padding-left: 5%;
         padding-right: 5%;
