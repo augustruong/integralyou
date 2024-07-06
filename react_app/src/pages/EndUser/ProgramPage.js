@@ -50,17 +50,29 @@ export default function ProgramPage(){
                 <div className="m-title">{words.terms.program.goals}</div>
                 <img  className="spark" src={process.env.PUBLIC_URL + `/img/spark.svg`}/>
                 <div className="items">
-                    <div className="feature-item" data-aos="flip-right" >
-                        <img src={process.env.PUBLIC_URL + `/img/program/featureIcon-1.svg`} />
-                        <img src={process.env.PUBLIC_URL + `/img/program/featureBase-1.svg`}/>
-                    </div>
-                    <div className="feature-item"  data-aos="flip-right">
-                        <img src={process.env.PUBLIC_URL + `/img/program/featureIcon-2.svg`}/>
-                        <img src={process.env.PUBLIC_URL + `/img/program/featureBase-2.svg`}/>
+                    <div className="feature-item" data-aos="flip-right">
+                        <div className="img-wrapper">
+                            <img src={process.env.PUBLIC_URL + `/img/program/featureIcon-1.svg`} />
+                        </div>
+                        <div className="base-wrapper">
+                            <img src={process.env.PUBLIC_URL + `/img/program/featureBase-1.svg`}/>
+                        </div>
                     </div>
                     <div className="feature-item" data-aos="flip-right">
-                        <img src={process.env.PUBLIC_URL + `/img/program/featureIcon-3.svg`} />
-                        <img src={process.env.PUBLIC_URL + `/img/program/featureBase-3.svg`}/>
+                        <div className="img-wrapper">
+                            <img src={process.env.PUBLIC_URL + `/img/program/featureIcon-2.svg`}/>
+                        </div>
+                        <div className="base-wrapper">
+                            <img src={process.env.PUBLIC_URL + `/img/program/featureBase-2.svg`}/>
+                        </div>
+                    </div>
+                    <div className="feature-item" data-aos="flip-right">
+                        <div className="img-wrapper">
+                            <img src={process.env.PUBLIC_URL + `/img/program/featureIcon-3.svg`} />
+                        </div>
+                        <div className="base-wrapper">
+                            <img src={process.env.PUBLIC_URL + `/img/program/featureBase-3.svg`}/>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -83,8 +95,12 @@ export default function ProgramPage(){
                 </div>
                 <div className="content">
                     <div className="step-item">
-                        <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-1.svg`} data-aos="flip-left"/>
-                        <div className="label" data-aos="fade-right">Step 1</div>
+                        <div data-aos="flip-left">
+                            <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-1.svg`} />
+                        </div>
+                        <div data-aos="fade-right">
+                            <div className="label">Step 1</div>
+                        </div>
                         <p>
                             ・自分の本当の望みを知る<br/>
                             ・建て前と本音のギャップを知る<br/>
@@ -93,8 +109,12 @@ export default function ProgramPage(){
                         </p>
                     </div>
                     <div className="step-item">
-                        <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-2.svg`} data-aos="flip-left" data-aos-delay="200"/>
-                        <div className="label" data-aos="fade-right" data-aos-delay="200">Step 2</div>
+                        <div data-aos="flip-left" data-aos-delay="200">
+                            <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-2.svg`} />
+                        </div>
+                        <div data-aos="fade-right" data-aos-delay="200">
+                            <div className="label">Step 2</div>
+                        </div>
                         <p>
                             ・やりたいこと、できることを整理する<br/>
                             ・本当はやりたくないことを知る<br/>
@@ -102,8 +122,12 @@ export default function ProgramPage(){
                         </p>
                     </div>
                     <div className="step-item">
-                        <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-3.svg`} data-aos="flip-left" data-aos-delay="400"/>
-                        <div className="label" data-aos="fade-right" data-aos-delay="400">Step 3</div>
+                        <div data-aos="flip-left" data-aos-delay="400">
+                            <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-3.svg`} />
+                        </div>
+                        <div data-aos="fade-right" data-aos-delay="400">
+                            <div className="label">Step 3</div>
+                        </div>
                         <p>
                             ・具体的・長期的な目標を設定する<br/>
                             ・ぶれない目的意識を創る<br/>
@@ -112,8 +136,12 @@ export default function ProgramPage(){
                         </p>
                     </div>
                     <div className="step-item">
-                        <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-4.svg`} data-aos="flip-left" data-aos-delay="600"/>
-                        <div className="label" data-aos="fade-right" data-aos-delay="600">Step 4</div>
+                        <div data-aos="flip-left" data-aos-delay="600">
+                            <img src={process.env.PUBLIC_URL + `/img/program/stepIcon-4.svg`}/>
+                        </div>
+                        <div data-aos="fade-right" data-aos-delay="600">
+                            <div className="label" >Step 4</div>
+                        </div>
                         <p>
                             ・行動できるマインドを強化する<br/>
                             ・失敗、落ち込み、立ち直りを経験する<br/>

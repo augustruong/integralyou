@@ -61,19 +61,19 @@
     margin-top: 18%;
 }
 
-.program section.features .feature-item > img:nth-child(1) {
+.program section.features .feature-item > .img-wrapper {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     animation: floatAbsolute 5s infinite;
 }
-.program section.features .feature-item:nth-child(1) > img:nth-child(1) {
+.program section.features .feature-item:nth-child(1) > .img-wrapper  {
     top: -175%;
 }
-.program section.features .feature-item:nth-child(2) > img:nth-child(1) {
+.program section.features .feature-item:nth-child(2) > .img-wrapper  {
     top: -140%;
 }
-.program section.features .feature-item:nth-child(3) > img:nth-child(1) {
+.program section.features .feature-item:nth-child(3) > .img-wrapper {
     top: -170%;
 }
 
