@@ -1,6 +1,5 @@
 #header {
     position: fixed;
-    left: 0;
     top: 0;
     z-index: 999;
     display: flex;
@@ -10,6 +9,8 @@
     padding: 18px 50px;
     width: 100%;
     background-color: #FFF9F9;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 #header a {
     color: var(--color-gray);
@@ -144,6 +145,6 @@ a.nav__link.active {
         font-size: 20px;
     }
     #header > .header__menu ul li {
-        margin-top: 0px;
+        margin-top: 10px;
     }
 }

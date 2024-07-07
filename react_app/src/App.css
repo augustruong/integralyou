@@ -171,7 +171,6 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* gap: var(--space-xxl); */
   gap: calc(var(--space-xxl)*2);
 
 }
@@ -181,7 +180,6 @@ a {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  /* gap: var(--space-xxl); */
   gap: calc(var(--space-xxl)*2);
 } 
 @media (min-width: 640px) {
@@ -337,14 +335,16 @@ a {
 .bullet-list {
   line-height: 250%;
 }
+
 .news-icon {
   position: fixed;
   top: 50%;
-  left: 50px;
+  left: calc((100vw - var(--max-width))/2 + 50px);
   transform: translateY(-50%);
   cursor: pointer;
   z-index: 999;
 }
+
 .news-icon .text {
   writing-mode: tb-rl;
   margin: 0 auto;
@@ -367,17 +367,19 @@ a {
 }
 .news-icon:hover .text{
   color: #fff;
-  /* transform: scale(1.02);
-  transition: all 0.05s ease-out; */
   z-index: 999;
   background-image: linear-gradient(45deg, #E8437E,#ff9284, #E8437E,#ff9284);
   background-size: 300% 300%;
   animation: gradientReverse 3s ease-in infinite;
 }
 .news-icon:hover img{
-  /* transform: scale(1.05);
-  transition: all 0.05s ease-out; */
   z-index: 1000;
+}
+
+@media (max-width: 1920px) { 
+  .news-icon {
+    left: 50px;
+  }
 }
 /* -----------------------------------------------------------------------------FORM */
 input[type="text"], input[type="email"], input[type="tel"], textarea{

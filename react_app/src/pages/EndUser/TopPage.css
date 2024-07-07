@@ -296,7 +296,7 @@ section.blog .blog-list {
         margin-bottom: var(--space-s);
     }
     section.trial > .visual-wrapper > .img-wrapper{
-        width: 400px;
+        width: 100%;
     }
     .newsletter-form {
         width: 100%;

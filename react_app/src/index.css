@@ -19,6 +19,7 @@
   --space-l: 32px;
   --space-xl: 44px;
   --space-xxl: 52px;
+  --max-width: 1920px;
 }
 
 body {
@@ -26,6 +27,8 @@ body {
   font-size: 14px;
   color: var(--color-gray);
   background-color: rgb(255, 249, 249);
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 body *{z-index: 1; }
 
@@ -38,3 +41,6 @@ body, html {
 
 }
 
+div {
+  max-width: var(--max-width);
+}

@@ -27,9 +27,9 @@
 }
 
 .grayzone section.message-1 {
-    background: url('/img/grayzone/message1.png');
-    background-size: cover;
-
+    background: url('/img/grayzone/message1.png') no-repeat;
+    background-size: contain;
+    background-position: center;
     position: relative;
 }
 .grayzone section.message-1 .gradient {
@@ -44,8 +44,7 @@
     padding-bottom: 150px;
     justify-content: center;
 }
-.grayzone section.message-2 .p1 .content-wrapper {
-}
+
 .grayzone section.message-2 .p1 .img-wrapper .line{
     width: 2px;
     height: 70vh;
