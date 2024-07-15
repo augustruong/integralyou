@@ -32,13 +32,7 @@
     background-position: center;
     position: relative;
 }
-.grayzone section.message-1 .gradient {
-    background: linear-gradient(0deg, rgba(255,133,164,1) -20%, rgba(255,133,164,0) 40%);
-    animation: gradientBlend 7s ease-in infinite;
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-}
+
 .grayzone section.message-2 .p1{
     padding-top: 100px;
     padding-bottom: 150px;
@@ -77,51 +71,51 @@
 .grayzone section.message-2 .p2 .content-wrapper {
     padding-left: calc(var(--space-xxl)* 2);
 }
-.grayzone section.message-3 {
+.grayzone section.message-4 {
     position: relative;;
 }
-.grayzone section.message-3  .img-wrapper img{
+.grayzone section.message-4  .img-wrapper img{
     width: 100%;
 }
 
-.grayzone section.message-4 {
+.grayzone section.message-5 {
     padding-top: 100px;
     padding-bottom: 120px;
     justify-content: center;
 
 }
-.grayzone section.message-4 .gradient {
+.grayzone .gradient {
     background: linear-gradient(0deg, rgba(255,133,164,1) -20%, rgba(255,133,164,0) 40%);
     animation: gradientBlend 7s ease-in infinite;
     height: 100vh;
     width: 100vw;
     position: absolute;
 }
-.grayzone section.message-4 .left-wrapper {
+.grayzone section.message-5 .left-wrapper {
     height: 80vh;
     align-content: start;
     width: 50vw;
     padding-left: calc(var(--space-xxl)* 2);
 
 }
-.grayzone section.message-4 .right-wrapper {
+.grayzone section.message-5 .right-wrapper {
     height: 80vh;
     align-content: end;
     padding-left: calc(var(--space-xxl)* 2 - 72 - var(--space-xl));
 }
-.grayzone section.message-5 {
+.grayzone section.message-6 {
     padding-top: 100px;
     padding-bottom: 100px;
     height: 100vh;
 }
-.grayzone section.message-5 .img-wrapper {
+.grayzone section.message-6 .img-wrapper {
     width: 50vw; 
 }
 
-.grayzone section.message-5 .spark-p756 {
+.grayzone section.message-6 .spark-p756 {
     margin-left: -20%;
 }
-.grayzone section.message-5 .content-wrapper {
+.grayzone section.message-6 .content-wrapper {
     /* margin-left: -100px; */
     width: 50vw; 
     padding-left: calc(var(--space-xxl)* 2);
@@ -187,43 +181,43 @@
         padding: 0;
         margin-bottom: var(--space-xl);
     }
-    .grayzone section.message-3 .content-wrapper {
+    .grayzone section.message-4 .content-wrapper {
         padding: var(--space-base);
     }
-    .grayzone section.message-4 {
+    .grayzone section.message-5 {
         flex-direction: column;
     }
-    .grayzone section.message-4 .left-wrapper {
+    .grayzone section.message-5 .left-wrapper {
         padding: var(--space-base);
         width: 100vw;
         height: auto;
     }
 
-    .grayzone section.message-4 .right-wrapper {
+    .grayzone section.message-5 .right-wrapper {
         /* height: auto; */
         align-content: center;
     }
-    .grayzone section.message-4 .right-wrapper .flex-row-start {
+    .grayzone section.message-5 .right-wrapper .flex-row-start {
         flex-direction: column;
         align-items: center;
     }
 
-    .grayzone section.message-4 .gradient {
+    .grayzone section.message-5 .gradient {
         height: 180vh;
     }
-    .grayzone section.message-5 {
+    .grayzone section.message-6 {
         flex-direction: column;
     }
-    .grayzone section.message-5 .img-wrapper {
+    .grayzone section.message-6 .img-wrapper {
         margin: 0 auto;
         margin-top: -180px;
     }
-    .grayzone section.message-5 .spark-p756 {
+    .grayzone section.message-6 .spark-p756 {
         width: 200px;
         height: 200px;
         margin: 0;
     }
-    .grayzone section.message-5 .content-wrapper {
+    .grayzone section.message-6 .content-wrapper {
         width: 100%;
         margin: 0;
         padding: var(--space-base);

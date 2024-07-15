@@ -95,11 +95,14 @@ export default function GrayZonePage(){
                         <br/><br/>
                         現実に対応するだけで、いっぱいいっぱいで<br/>
                         わくわくする未来や、夢なんて考えられない…
+                        <br/><br/>
+                        実は、これすべて、会社員時代の私のことです。
                         </p>
                     </div>
                 </div>
             </section>
-            <section className="message-3 layout-2">
+            
+            <section className="message-4 layout-2">
                 <div className="img-wrapper" data-aos="fade-up">
                     <img src={process.env.PUBLIC_URL + `/img/grayzone/mystory.png`} className="w-100pc"/>
                 </div>
@@ -129,8 +132,50 @@ export default function GrayZonePage(){
                     </p>
                 </div>
             </section>
-            <section className="message-4 flex-row">
-            <div className="gradient"></div>
+
+            <section className="message-3 layout-1 gap-l">
+                <div className="gradient"></div>
+                <div className="spark p72"></div>
+                {device === "pc" && 
+                    <div>
+                        <p className="text-align-ct">
+                            人に誤解されないように、人の気を悪くしないように、<br/>
+                            場の雰囲気をぶち壊さないように、<br/>
+                            自分の行動を少しずつコントロールしていけるように…<br/>
+                            でも、これって、自分らしくない。自分らしくないんです。<br/><br/>
+
+                            少しは生きやすくなりましたが、<br/>
+                            「○○しないように」なんて生きる人生、やっぱり何か違うと思うんです。<br/>
+                        </p>
+                    
+                        <div className="p-title mb-m text-align-ct"><span className="color-gray">私は</span>方向性を変える<span className="color-gray">ことにしました。</span></div>
+                        <p className="text-align-ct">
+                            できないことはそこそこにして、自分ができることで生きていく<br/>という選択肢を取ることにしたのです。
+                        </p>
+                    </div>
+                }
+                {device === "mb" && 
+                    <div>
+                        <p className="text-align-ct">
+                            人に誤解されないように、<br/>人の気を悪くしないように、<br/>
+                            場の雰囲気をぶち壊さないように、<br/>
+                            自分の行動を少しずつコントロールしていけるように…<br/><br/>
+                            でも、これって、自分らしくない。<br/>自分らしくないんです。<br/><br/>
+
+                            少しは生きやすくなりましたが、<br/>
+                            「○○しないように」なんて生きる人生、<br/>
+                            やっぱり何か違うと思うんです。<br/><br/>
+                        </p>
+                        <div className="p-title mb-m text-align-ct"><span className="color-gray">私は</span>方向性を変える<br/><span className="color-gray">ことにしました。</span></div>
+                        <p className="text-align-ct">
+                            できないことはそこそこにして、<br/>自分ができることで生きていく<br/>という選択肢を取ることにしたのです。
+                        </p>
+                    </div>
+                }
+            </section>
+
+            <section className="message-5 flex-row">
+                <div className="gradient"></div>
 
                 <div className="left-wrapper">
                     <div className="p-title"><span className="color-gray">私と一緒に、本当にやりたいこと、</span><br/>なりたい自分<span className="color-gray">を発見しませんか？</span></div>
@@ -159,7 +204,7 @@ export default function GrayZonePage(){
                     </div>
                 </div>
             </section>
-            <section className="message-5 flex-row">
+            <section className="message-6 flex-row">
                 <div className="img-wrapper">
                     <div className="spark-p756"></div>
                 </div>
